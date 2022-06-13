@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Tiles_Sidewalk.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="Tiles" type="Node2D"]
+
+[node name="upper1" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="upper1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="upper1/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="upper2" type="Sprite" parent="."]
+position = Vector2( 48, 0 )
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
+frame = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="upper2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="upper2/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="lower1" type="Sprite" parent="."]
+position = Vector2( 0, 40 )
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="lower1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lower1/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="lower2" type="Sprite" parent="."]
+position = Vector2( 48, 40 )
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
+frame = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="lower2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lower2/StaticBody2D"]
+shape = SubResource( 1 )
