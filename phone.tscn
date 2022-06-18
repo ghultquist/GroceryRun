@@ -27,7 +27,8 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Opening"
-length = 5.0
+length = 6.0
+step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("../OpeningAni/Ani0:visible")
 tracks/0/interp = 1
@@ -131,10 +132,10 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 4, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 5.5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -280,22 +281,6 @@ texture = ExtResource( 13 )
 position = Vector2( 320, 178.999 )
 texture = ExtResource( 2 )
 
-[node name="NoBtn" type="TextureButton" parent="."]
-visible = false
-margin_left = 324.0
-margin_top = 209.999
-margin_right = 371.0
-margin_bottom = 238.999
-texture_normal = ExtResource( 6 )
-
-[node name="YesBtn" type="TextureButton" parent="."]
-visible = false
-margin_left = 270.0
-margin_top = 209.999
-margin_right = 317.0
-margin_bottom = 238.999
-texture_normal = ExtResource( 8 )
-
 [node name="QuitBtn" type="TextureButton" parent="."]
 visible = false
 margin_left = 270.0
@@ -365,8 +350,25 @@ custom_fonts/font = ExtResource( 12 )
 text = "yo! ptatpp are playing at the jumping lizard tonite! wanna come along?"
 autowrap = true
 
+[node name="NoBtn" type="TextureButton" parent="."]
+visible = false
+margin_left = 324.0
+margin_top = 209.999
+margin_right = 371.0
+margin_bottom = 238.999
+texture_normal = ExtResource( 6 )
+
+[node name="YesBtn" type="TextureButton" parent="."]
+visible = false
+margin_left = 270.0
+margin_top = 209.999
+margin_right = 317.0
+margin_bottom = 238.999
+texture_normal = ExtResource( 8 )
+
 [node name="OpeningAni" type="AnimationPlayer" parent="."]
 root_node = NodePath("../CreditsBtn")
+playback_speed = 1.5
 anims/Opening = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
