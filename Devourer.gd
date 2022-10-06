@@ -15,7 +15,7 @@ var escape_success = false
 var can_attack = true
 
 func _ready():
-	$AnimationPlayer.play("Enemy-Idle")
+	$AnimationPlayer.play("DevIdle")
 
 func _process(delta):
 	if can_move == false:

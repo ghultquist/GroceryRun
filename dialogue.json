@@ -1,0 +1,5 @@
+{
+    "000" : {"type": "interface", "speaker_id": "X", "text": ["Go out?"], "options": ["Go out","Stay in"]},
+    "001" : {"type": "thought", "speaker_id": "X", "text": ["God I really hope this works","I'm tired >:("]},
+    "002" : {"type": "thought", "speaker_id": "X", "text": ["I beg of thee merciful godot","LET THIS WORK!!! ;u;"]}
+}

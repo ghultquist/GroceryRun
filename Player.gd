@@ -15,11 +15,12 @@ var can_move = true
 var health = 3
 
 func _ready():
-	var devourernode = get_tree().get_root().find_node("Devourer", true, false)
-	devourernode.connect("attack", self, "beingattacked")
-	devourernode.connect("attack_over", self, "beingreleased")
-	devourernode.connect("damage", self, "takendamage")
-	stats.connect("no_health", self, "queue_free")
+	if get_parent().name == "world":
+		var devourernode = get_tree().get_root().find_node("Devourer", true, false)
+		devourernode.connect("attack", self, "beingattacked")
+		devourernode.connect("attack_over", self, "beingreleased")
+		devourernode.connect("damage", self, "takendamage")
+		stats.connect("no_health", self, "queue_free")
 	
 	set_sprite()
 
@@ -70,6 +71,7 @@ func _physics_process(delta):
 
 func beingattacked():
 	can_move = false
+	#self.position.x = 
 	$AnimationPlayer.play("attackstart")
 	yield($AnimationPlayer, "animation_finished")
 	$AnimationPlayer.play("grabbed")
@@ -95,7 +97,7 @@ func set_sprite():
 		$Sprite.texture = load("res://Assets/ProtagSpriteSheet1-0.png")
 	elif health == 2:
 		$Sprite.texture = load("res://Assets/ProtagSpriteSheet1-1.png")
-	else:
+	elif health == 1:
 		$Sprite.texture = load("res://Assets/ProtagSpriteSheet1-2.png")
 
 func _hide(delta):
@@ -105,5 +107,3 @@ func _hide(delta):
 	else:
 		self.show()
 		get_node("CollisionShape2D").disabled= false
-
-
