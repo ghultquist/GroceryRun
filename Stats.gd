@@ -3,6 +3,8 @@ extends Node
 export(int) var max_health = 1
 onready var health = max_health setget set_health
 
+var endings = ["ending2", "ending3"]
+
 signal no_health
 
 func set_health(value):

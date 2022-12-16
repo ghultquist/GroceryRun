@@ -1,5 +1,115 @@
 {
-    "000" : {"type": "interface", "speaker_id": "X", "text": ["Go out?"], "options": ["Go out","Stay in"]},
-    "001" : {"type": "thought", "speaker_id": "X", "text": ["God I really hope this works","I'm tired >:("]},
-    "002" : {"type": "thought", "speaker_id": "X", "text": ["I beg of thee merciful godot","LET THIS WORK!!! ;u;"]}
+    "000" : {
+        "type": "interface", 
+        "speaker_id": "X", 
+        "text": ["Go out?"], 
+        "choices": {
+            "choice1" : {"text": "Yeah!", "next" : "005"},
+            "choice2" : {"text" : "Maybe next time...", "next": "001"}},
+        "commands": []
+    },
+    "001" : {
+        "type": "thought", 
+        "speaker_id": "X", 
+        "text": ["Are you sure? It's been pretty lonely since you moved out by yourself..."],
+        "choices": {
+            "choice1" : {"text": "Actually, it would be good to see a friendy face", "next" : "005"},
+            "choice2" : {"text": "I've been fine. Plus, we just met. I wouldn't exactly call us friends", "next": "002"}},
+        "commands": []
+    },
+    "002" : {
+        "type": "thought", 
+        "speaker_id": "X", 
+        "text": ["Now that you think about it, it's actually been... what? a week? since you've seen anyone.", "You've been so busy unpacking... ","Isn't it time to go back out into the world of the living?"],
+        "choices": {
+            "choice1" : {"text": "I guess seeing anyone would be nice at this point...", "next" : "005"},
+            "choice2" : {"text": "I could just stay in and rewatch the new season of Mop Psychic 1000...", "next": "003"}},
+        "commands": []
+    },
+    "003" : {
+        "type": "thought", 
+        "speaker_id": "X", 
+        "text": ["There's nothing wrong with some alone time, but it's hard to deny that you have been having quite a bit of alone time lately.", "It's starting to wear on you.","Going out could be refreshing..."],
+        "choices": {
+            "choice1" : {"text":"OKAY FINE. I'll give it a shot.", "next" : "005"},
+            "choice2" : {"text":"I'm NOT lonely and I DON'T need to be around a bunch of people I barely know.", "next": "004"}},
+        "commands": []
+    },
+    "004" : {
+        "type": "ending", 
+        "speaker_id": "X", 
+        "text": ["You stay in for the 9th -- no, 10th? -- night in a row. Loneliness doesn't always come from being alone, but after a while, being alone can wear on a person. We all have to talk to someone at some point."],
+        "choices": {},
+        "commands": ["set ending1 true"]
+    },
+    "005" : {
+        "type": "narrative", 
+        "speaker_id": "X", 
+        "text": ["Grabbing your jacket, you head out the door to see what the night had in store..."],
+        "choices": {},
+        "commands": []
+    },
+    "100" : {
+        "type": "thought", 
+        "speaker_id": "X", 
+        "text": ["Okay. It's a little too crowded and a lot too hot, but that's fine.", "My phone says that there's still a few minutes before the band begins... and also that there's no cell reception down here.", "I guess I'll have to find Niko the old fashioned way..."],
+        "choices": {},
+        "commands": []
+    },
+    "101" : {
+        "type": "speaking", 
+        "speaker_id": "Ghost1", 
+        "text": ["I didn't even know clouds made sounds like that!"],
+        "choices": {},
+        "commands": []
+    },
+    "102" : {
+        "type": "speaking", 
+        "speaker_id": "Ghost2", 
+        "text": ["Zi, I don't think they do..."],
+        "choices": {},
+        "commands": []
+    },
+    "103" : {
+        "type": "thought", 
+        "speaker_id": "X", 
+        "text": ["They seem to be having a conversation, I shouldn't interrupt..."],
+        "choices": {},
+        "commands": ["set right to left"]
+    },    
+    "104" : {
+        "type": "thought", 
+        "speaker_id": "", 
+        "text": ["They look pretty busy setting up for the show back there..."],
+        "choices": {},
+        "commands": ["set right to true"]
+    },
+    "105" : {
+        "type": "thought", 
+        "speaker_id": "X", 
+        "text": ["I'll just text them and let them know I'm here...","Of course, there's no service in this dank basement.", "Oh, and it's 10pm."],
+        "choices": {},
+        "commands": []
+    },
+    "106" : {
+        "type": "speaking", 
+        "speaker_id": "Bird", 
+        "text": ["WE ARE PEPPERONI TONY AND THE PIZZA PALS....", "DELIVERY!"],
+        "choices": {},
+        "commands": []
+    },    
+    "107" : {
+        "type": "", 
+        "speaker_id": "", 
+        "text": [""],
+        "choices": {},
+        "commands": []
+    },    
+    "999" : {
+        "type": "", 
+        "speaker_id": "", 
+        "text": [""],
+        "choices": {},
+        "commands": []
+    }
 }

@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/dialogue_arrow-export.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, 12 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "indication"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 11, 12 ), Vector2( 14, 12 ) ]
+}
+
+[node name="choice" type="TextureButton"]
+
+[node name="choiceText" type="RichTextLabel" parent="."]
+margin_left = 32.0
+margin_right = 384.0
+margin_bottom = 56.0
+rect_clip_content = false
+theme = SubResource( 2 )
+text = "Option 1 or whatever this is lol"
+scroll_active = false
+
+[node name="arrowIndicator" type="Sprite" parent="."]
+position = Vector2( 8, 12 )
+rotation = -1.5708
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="arrowIndicator"]
+autoplay = "indication"
+anims/RESET = SubResource( 3 )
+anims/indication = SubResource( 4 )

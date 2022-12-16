@@ -1,8 +1,6 @@
 extends Node2D
 
-const dialogueBoxScene = preload("res://dialogue.tscn")
 const phoneScene = preload("res://phone.tscn")
-var d
 var phoneStart
 
 func _ready():
