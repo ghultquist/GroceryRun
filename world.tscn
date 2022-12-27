@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://street_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Devourer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/monster_arms.png" type="Texture" id=4]
 [ext_resource path="res://Assets/BG_NightSky_3-3.png" type="Texture" id=5]
 [ext_resource path="res://Assets/BG_Clouds.png" type="Texture" id=6]
 [ext_resource path="res://Assets/BG_NightSky_3-3twink1.png" type="Texture" id=7]
@@ -217,7 +218,7 @@ shape = SubResource( 8 )
 one_way_collision = true
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -96, 8 )
+position = Vector2( 25, 8 )
 
 [node name="TopLeft" parent="Player/Camera2D/Limits" index="0"]
 position = Vector2( -223, -368 )
@@ -227,6 +228,12 @@ position = Vector2( 5824, 320 )
 
 [node name="Devourer" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1816, -56 )
+
+[node name="tentacles" type="Sprite" parent="."]
+position = Vector2( -101, 4 )
+texture = ExtResource( 4 )
+hframes = 2
+vframes = 2
 
 [editable path="Player"]
 [editable path="Player/Camera2D"]
