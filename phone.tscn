@@ -11,7 +11,7 @@
 [ext_resource path="res://Assets/timebarArrow.png" type="Texture" id=9]
 [ext_resource path="res://Assets/PhoneSequence/SettingsButtonOp2.png" type="Texture" id=10]
 [ext_resource path="res://Assets/PhoneSequence/phone_textbox.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://Assets/PhoneSequence/phone_StartBG.png" type="Texture" id=13]
 [ext_resource path="res://Assets/PhoneSequence/phone_PauseBG.png" type="Texture" id=14]
 [ext_resource path="res://Assets/PhoneSequence/Opening/phone_open2.png" type="Texture" id=15]
@@ -28,6 +28,7 @@
 
 [sub_resource type="DynamicFont" id=3]
 size = 8
+extra_spacing_bottom = 4
 font_data = ExtResource( 12 )
 
 [sub_resource type="Animation" id=1]

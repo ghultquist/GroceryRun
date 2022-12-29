@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/dialogue_arrow-export.png" type="Texture" id=2]
+[ext_resource path="res://Assets/textbox_hover.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
+size = 8
 font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=2]
@@ -41,11 +43,18 @@ tracks/0/keys = {
 }
 
 [node name="choice" type="TextureButton"]
+anchor_right = 0.6
+anchor_bottom = 0.089
+margin_right = -8.0
+margin_bottom = -0.0400009
+texture_hover = ExtResource( 3 )
+texture_focused = ExtResource( 3 )
 
 [node name="choiceText" type="RichTextLabel" parent="."]
-margin_left = 32.0
-margin_right = 384.0
-margin_bottom = 56.0
+margin_left = 33.0
+margin_top = 8.0
+margin_right = 385.0
+margin_bottom = 19.0
 rect_clip_content = false
 theme = SubResource( 2 )
 text = "Option 1 or whatever this is lol"

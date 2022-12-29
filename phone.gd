@@ -33,28 +33,8 @@ func gamestart():
 	$SettingsBtmIcon.hide()
 	$TextboxBG.show()
 	$Text.show()
-	$YesBtn.show()
-	$NoBtn.show()
+	dialogue("000")
 
-
-func _on_YesBtn_pressed():
-	queue_free()
-
-
-
-
-func _on_NoBtn_pressed():
-	if noCount == 0:
-		dialogue("001")
-		noCount += 1
-	elif noCount == 1:
-		dialogue("002")
-		noCount+= 1
-	elif noCount == 2:
-		dialogue("003")
-		noCount += 1
-	else:
-		pass
 
 func dialogue(index):
 	d = dialogueBoxScene.instance()
