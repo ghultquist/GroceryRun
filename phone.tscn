@@ -335,46 +335,37 @@ texture_normal = ExtResource( 10 )
 
 [node name="ending1" type="TextureButton" parent="phone"]
 visible = false
-margin_left = 272.0
-margin_top = 96.0
-margin_right = 312.0
-margin_bottom = 136.0
+margin_left = 285.0
+margin_top = 125.0
+margin_right = 325.0
+margin_bottom = 165.0
 texture_normal = ExtResource( 9 )
 texture_disabled = ExtResource( 25 )
 
 [node name="ending2" type="TextureButton" parent="phone"]
 visible = false
-margin_left = 328.0
-margin_top = 96.0
-margin_right = 368.0
-margin_bottom = 136.0
+margin_left = 325.0
+margin_top = 125.0
+margin_right = 365.0
+margin_bottom = 165.0
 texture_normal = ExtResource( 9 )
 texture_disabled = ExtResource( 25 )
 
 [node name="ending3" type="TextureButton" parent="phone"]
 visible = false
-margin_left = 272.0
-margin_top = 154.0
-margin_right = 312.0
-margin_bottom = 194.0
+margin_left = 285.0
+margin_top = 175.0
+margin_right = 325.0
+margin_bottom = 215.0
 texture_normal = ExtResource( 9 )
 texture_disabled = ExtResource( 25 )
 
 [node name="ending4" type="TextureButton" parent="phone"]
 visible = false
-margin_left = 328.0
-margin_top = 149.0
-margin_right = 368.0
-margin_bottom = 189.0
-texture_normal = ExtResource( 9 )
-texture_disabled = ExtResource( 25 )
-
-[node name="ending5" type="TextureButton" parent="phone"]
-visible = false
-margin_left = 264.0
-margin_top = 208.0
-margin_right = 304.0
-margin_bottom = 248.0
+margin_left = 325.0
+margin_top = 175.0
+margin_right = 365.0
+margin_bottom = 215.0
 texture_normal = ExtResource( 9 )
 texture_disabled = ExtResource( 25 )
 

@@ -87,7 +87,7 @@ func takendamage():
 	print("ouch")
 	$AnimationPlayer.play("damagetaken")
 	yield($AnimationPlayer, "animation_finished")
-	health = health - 1
+	health -= 1
 	set_sprite()
 	$AnimationPlayer.play("grabbed")
 

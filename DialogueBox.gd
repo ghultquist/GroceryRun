@@ -1,6 +1,13 @@
 extends Control
 
 signal finished
+signal ending1
+signal ending2
+signal ending3
+signal ending4
+
+onready var stats = get_tree().get_root().find_node("Stats", true, false)
+onready var main = get_tree().get_root().find_node("Main", true, false)
 
 var dialoguePath = "res://dialogue.json"
 var dialogueSelectDict = {}
@@ -9,6 +16,7 @@ var dialogue = []
 var choicesDict = {}
 var choice1Dict
 var choice2Dict
+var commandDict = {}
 var selection 
 
 var dialogueIndex = 0
@@ -58,11 +66,23 @@ func selectDialogue(dialogueSelection):
 	dialogueSelectDict = dialogueDict[dialogueSelection]
 	dialogue = dialogueSelectDict["text"]
 	choicesDict = dialogueSelectDict["choices"]
+	commandDict = dialogueSelectDict["commands"]
+	if len(commandDict) != 0:
+		applyEffect()
 	if dialogue != []:
 		setDialogue()
-	elif choicesDict != {}:
-		setChoices()
 
+func applyEffect():
+	var type = commandDict["type"]
+	var specific = commandDict["specific"]
+	
+	if type == "ending":
+		for endings in stats.endings:
+			if specific == endings[0]:
+				endings[1] = true
+				emit_signal(specific)
+			print(endings)
+	
 func setChoices():
 	choice1Dict = choicesDict["choice1"]
 	choice2Dict = choicesDict["choice2"]
