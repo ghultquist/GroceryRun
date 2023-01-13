@@ -16,6 +16,3 @@ func set_health(value):
 	health = value
 	if health <=0:
 		emit_signal("no_health")
-
-func ending1():
-	print("ending1 has been received") #NOT CONNECTING TO SCENE B-WORD

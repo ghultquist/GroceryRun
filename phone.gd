@@ -3,9 +3,8 @@ extends Control
 signal ending1
 
 onready var stats = get_tree().get_root().find_node("Stats", true, false)
-const dialogueBoxScene = preload("res://dialogue.tscn")
-var d
 var noCount = 0
+signal dialogue(index)
 
 func _ready():
 	$StartBtn.show()
@@ -38,15 +37,4 @@ func gamestart():
 	$SettingsBtmIcon.hide()
 	$TextboxBG.show()
 	$Text.show()
-	dialogue("000")
-
-
-func dialogue(index):
-	d = dialogueBoxScene.instance()
-	self.add_child(d)
-	d.get_child(0).connect("ending1", self, "ending1")
-	d.get_child(0).selectDialogue(index)
-	
-
-func ending1():
-	emit_signal("ending1")
+	emit_signal("dialogue", "000")
