@@ -81,7 +81,6 @@ func applyEffect():
 			if specific == endings[0]:
 				endings[1] = true
 				emit_signal(specific)
-			print(endings)
 	
 func setChoices():
 	choice1Dict = choicesDict["choice1"]

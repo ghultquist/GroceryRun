@@ -1,7 +1,5 @@
 extends Control
 
-signal ending1
-
 onready var stats = get_tree().get_root().find_node("Stats", true, false)
 var noCount = 0
 signal dialogue(index)
@@ -14,6 +12,12 @@ func _ready():
 
 func intro():
 	$OpeningAni.play("Opening")
+
+func homescreen():
+	for i in range(0, 9):
+		$OpeningAni.get_child(i).hide()
+		
+
 
 func _on_StartBtn_pressed():
 	gamestart()
