@@ -47,7 +47,7 @@
         "speaker_id": "X", 
         "text": ["Grabbing your jacket, you head out the door to see what the night had in store..."],
         "choices": {},
-        "commands": {"type": "go to", "specific": "jumpinglizard"}
+        "commands": {"type": "goto", "specific": "jumpinglizard"}
     },
     "100" : {
         "type": "thought", 

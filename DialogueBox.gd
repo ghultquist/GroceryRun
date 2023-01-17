@@ -1,10 +1,8 @@
 extends Control
 
 signal finished
-signal ending1
-signal ending2
-signal ending3
-signal ending4
+signal ending
+signal goto
 
 onready var stats = get_tree().get_root().find_node("Stats", true, false)
 onready var main = get_tree().get_root().find_node("Main", true, false)
@@ -80,7 +78,7 @@ func applyEffect():
 		for endings in stats.endings:
 			if specific == endings[0]:
 				endings[1] = true
-				emit_signal(specific)
+	emit_signal(type, specific)
 	
 func setChoices():
 	choice1Dict = choicesDict["choice1"]
