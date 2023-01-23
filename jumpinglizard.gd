@@ -1,6 +1,7 @@
 extends Node2D
 
 signal dialogue(index)
+signal goto
 
 var left = false
 var right = false
@@ -8,6 +9,7 @@ var right = false
 func _ready():
 	$"bg-cyclop/AnimationPlayer".play("cyclop")
 	$"bg-ghost/AnimationPlayer".play("ghost")
+	$Monster.hide()
 	$"Player/Camera2D".zoom.x = .8
 	$"Player/Camera2D".zoom.y = .8
 
@@ -32,4 +34,26 @@ func showtime():
 	$Player.can_move = false
 	$Player/AnimationPlayer.play("Idle")
 	$"band-singer/AnimationPlayer".play("walk")
+	yield($"band-singer/AnimationPlayer", "animation_finished")
+	emit_signal("dialogue", "106")
+	$"band-singer/AnimationPlayer".play("singerrock")
+	yield(get_tree().create_timer(5), "timeout")
+	showstart()
+
+func showstart():
+	$"band-drummer/AnimationPlayer".play("drumrock")
+	$"band-guitar/AnimationPlayer".play("guitarrock")
+	$"lights-y".hide()
+	$"lights-r".show()
+	yield(get_tree().create_timer(3), "timeout")
+	$GO.show()
+	yield(get_tree().create_timer(2), "timeout")	
+	$GO.hide()
 	$Monster.show()
+	yield(get_tree().create_timer(2), "timeout")
+	$HOME.show()
+	yield(get_tree().create_timer(2), "timeout")
+	$HOME.hide()
+	$Monster/AnimationPlayer.play("unravel")
+	yield($Monster/AnimationPlayer, "animation_finished")
+	emit_signal("goto", "world")

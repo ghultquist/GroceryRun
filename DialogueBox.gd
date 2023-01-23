@@ -3,6 +3,7 @@ extends Control
 signal finished
 signal ending
 signal goto
+signal next
 
 onready var stats = get_tree().get_root().find_node("Stats", true, false)
 onready var main = get_tree().get_root().find_node("Main", true, false)
@@ -28,6 +29,7 @@ var choice = 0
 var selected = load("res://Assets/textbox_hover.png")
 
 func _ready():
+	#self.connect("next", self, "selectDialogue")
 	$Timer.wait_time = textSpeed
 	loadDialogue(dialoguePath)
 	
@@ -125,6 +127,8 @@ func setDialogue():
 		setChoices()
 	else:
 		emit_signal("finished")
+#		if len(commandDict) != 0:
+#			applyEffect()
 		clearVars()
 		queue_free()
 		finished = true

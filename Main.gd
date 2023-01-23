@@ -2,6 +2,7 @@ extends Node2D
 
 const phoneScene = preload("res://phone.tscn")
 const jumpinglizard = preload("res://jumpinglizard.tscn")
+const world = preload("res://world.tscn")
 
 onready var dialogueScene = preload("res://dialogue.tscn")
 var phone = null
@@ -48,12 +49,21 @@ func ending(specific):
 
 func goto(scene):
 	var sceneLoad
-	phone.queue_free()
+	
+	if current_scene == "phone":
+		phone.queue_free()
+	elif current_scene == "jumpinglizard":
+		jumpinglizard.queue_free()
+
 	if scene == "jumpinglizard":
 		sceneLoad = jumpinglizard.instance()
-		current_scene = "jumpinglizard"
+	elif scene == "world":
+		sceneLoad = world.instance()
+	
+	current_scene = scene
 	self.add_child(sceneLoad)
 	sceneLoad.connect("dialogue", self, "dialogue")
+	sceneLoad.connect("goto", self, "goto")
 
 
 

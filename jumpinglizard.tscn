@@ -240,7 +240,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=14]
 resource_name = "unravel"
 length = 1.5
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -356,12 +355,14 @@ position = Vector2( 0, 0 )
 position = Vector2( 640, 418 )
 
 [node name="Monster" type="Sprite" parent="."]
+visible = false
 position = Vector2( 74, 52 )
 texture = ExtResource( 16 )
 hframes = 13
 vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Monster"]
+playback_speed = 0.75
 anims/RESET = SubResource( 13 )
 anims/unravel = SubResource( 14 )
 
@@ -369,10 +370,10 @@ anims/unravel = SubResource( 14 )
 texture = ExtResource( 3 )
 
 [node name="lights-y" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 6 )
 
 [node name="lights-r" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 5 )
 
 [node name="foregroundppl" type="Sprite" parent="."]
