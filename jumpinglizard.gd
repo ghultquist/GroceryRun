@@ -64,6 +64,7 @@ func showstart():
 	$HOME.hide()
 	$Monster/AnimationPlayer.play("unravel")
 	yield($Monster/AnimationPlayer, "animation_finished")
+	yield(get_tree().create_timer(1), "timeout")		
 	emit_signal("goto", "world")
 
 func dialogue_finished():

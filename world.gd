@@ -1,5 +1,7 @@
 extends Node2D
 
+signal dialogue
+
 
 # Declare member variables here. Examples:
 # var a = 2

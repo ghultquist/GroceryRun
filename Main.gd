@@ -9,6 +9,7 @@ var phone = null
 const dialogueBoxScene = preload("res://dialogue.tscn")
 var commandReceived = false
 var current_scene
+var d
 
 signal dialogue_finished
 
@@ -27,7 +28,7 @@ func phoneIntro():
 	current_scene = "phone"
 
 func dialogue(dIndex):
-	var d = dialogueBoxScene.instance()
+	d = dialogueBoxScene.instance()
 	self.add_child(d)
 	d.get_child(0).connect("ending", self, "ending")
 	d.get_child(0).connect("goto", self, "goto")
@@ -52,10 +53,12 @@ func ending(specific):
 
 func goto(scene):
 	var sceneLoad
-	
+	$end/AnimationPlayer.play("fade")#currently not fading in correctly check animation
+	yield(d.get_child(0), "finished")
+	$end/AnimationPlayer.play_backwards("fade")
 	if current_scene == "phone":
 		phone.queue_free()
-		
+	
 	if scene == "phone":
 		sceneLoad = phone.instance()
 	elif scene == "jumpinglizard":
@@ -63,7 +66,7 @@ func goto(scene):
 	elif scene == "world":
 		sceneLoad = world.instance()
 	current_scene = scene
-	self.add_child(sceneLoad)
+	self.add_child_below_node($Stats, sceneLoad)
 	sceneLoad.connect("dialogue", self, "dialogue")
 	sceneLoad.connect("goto", self, "goto")
 
