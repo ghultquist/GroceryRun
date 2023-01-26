@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 const phoneScene = preload("res://phone.tscn")
 const jumpinglizard = preload("res://jumpinglizard.tscn")
@@ -9,6 +9,8 @@ var phone = null
 const dialogueBoxScene = preload("res://dialogue.tscn")
 var commandReceived = false
 var current_scene
+
+signal dialogue_finished
 
 func _ready():
 	phoneIntro()
@@ -29,6 +31,7 @@ func dialogue(dIndex):
 	self.add_child(d)
 	d.get_child(0).connect("ending", self, "ending")
 	d.get_child(0).connect("goto", self, "goto")
+	#d.get_child(0).connect("next", self, "dialogue")
 	if current_scene == "phone":
 		d.get_child(0).connect("finished", self, "phoneHome")
 	elif current_scene == "jumpinglizard":
@@ -52,14 +55,13 @@ func goto(scene):
 	
 	if current_scene == "phone":
 		phone.queue_free()
-	elif current_scene == "jumpinglizard":
-		jumpinglizard.queue_free()
-
-	if scene == "jumpinglizard":
+		
+	if scene == "phone":
+		sceneLoad = phone.instance()
+	elif scene == "jumpinglizard":
 		sceneLoad = jumpinglizard.instance()
 	elif scene == "world":
 		sceneLoad = world.instance()
-	
 	current_scene = scene
 	self.add_child(sceneLoad)
 	sceneLoad.connect("dialogue", self, "dialogue")
@@ -76,3 +78,4 @@ func phoneHome():
 		
 func dialogueEnd():
 	get_tree().get_root().find_node("Player", true, false).can_move = true
+	emit_signal("dialogue_finished")

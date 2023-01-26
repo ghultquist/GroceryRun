@@ -89,22 +89,36 @@
         "speaker_id": "X", 
         "text": ["I'll just text them and let them know I'm here...","Of course, there's no service in this dank basement.", "Oh, and it's 10pm."],
         "choices": {},
-        "commands": []
+        "commands": {}
     },
     "106" : {
         "type": "speaking", 
         "speaker_id": "Bird", 
         "text": ["WE ARE PEPPERONI TONY AND THE PIZZA PALS....", "DELIVERY!"],
         "choices": {},
-        "commands": []
+        "commands": {"type": "start", "specific":"show"}
     },    
     "107" : {
+        "type": "speaking", 
+        "speaker_id": "X", 
+        "text": ["What...", "Who are..."],
+        "choices": {},
+        "commands": []
+    },    
+    "108" : {
         "type": "", 
         "speaker_id": "", 
         "text": [""],
         "choices": {},
         "commands": []
-    },    
+    },
+    "109" : {
+        "type": "", 
+        "speaker_id": "", 
+        "text": [""],
+        "choices": {},
+        "commands": []
+    },
     "999" : {
         "type": "", 
         "speaker_id": "", 

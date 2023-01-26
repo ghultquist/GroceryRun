@@ -5,8 +5,10 @@ signal goto
 
 var left = false
 var right = false
+var next 
 
 func _ready():
+	get_parent().connect("dialogue_finished", self, "dialogue_finished")
 	$"bg-cyclop/AnimationPlayer".play("cyclop")
 	$"bg-ghost/AnimationPlayer".play("ghost")
 	$Monster.hide()
@@ -15,6 +17,10 @@ func _ready():
 
 func _on_left_body_entered(body):
 	emit_signal("dialogue", "101")
+	yield(get_parent(), "dialogue_finished")
+	emit_signal("dialogue", "102")
+	yield(get_parent(), "dialogue_finished")
+	emit_signal("dialogue", "103")	
 	left = true
 
 func _on_right_body_entered(body):
@@ -28,6 +34,8 @@ func _on_showtime_body_entered(body):
 		showtime()
 
 func showtime():
+	emit_signal("dialogue", "105")
+	yield(get_parent(), "dialogue_finished")
 	if $Player.facing_right == false:
 		$Player.facing_right = true
 		$Player/Sprite.flip_h = false
@@ -37,7 +45,7 @@ func showtime():
 	yield($"band-singer/AnimationPlayer", "animation_finished")
 	emit_signal("dialogue", "106")
 	$"band-singer/AnimationPlayer".play("singerrock")
-	yield(get_tree().create_timer(5), "timeout")
+	yield(get_parent(), "dialogue_finished")
 	showstart()
 
 func showstart():
@@ -57,3 +65,6 @@ func showstart():
 	$Monster/AnimationPlayer.play("unravel")
 	yield($Monster/AnimationPlayer, "animation_finished")
 	emit_signal("goto", "world")
+
+func dialogue_finished():
+	pass
