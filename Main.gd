@@ -54,7 +54,8 @@ func ending(specific):
 func goto(scene):
 	var sceneLoad
 	$end/AnimationPlayer.play("fade")#currently not fading in correctly check animation
-	yield(d.get_child(0), "finished")
+	if d.get_child(0):
+		yield(d.get_child(0), "finished")
 	$end/AnimationPlayer.play_backwards("fade")
 	if current_scene == "phone":
 		phone.queue_free()
