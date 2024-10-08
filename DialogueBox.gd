@@ -76,10 +76,6 @@ func applyEffect():
 	var type = commandDict["type"]
 	var specific = commandDict["specific"]
 	
-	if type == "ending":
-		for endings in stats.endings:
-			if specific == endings[0]:
-				endings[1] = true
 	emit_signal(type, specific)
 	
 func setChoices():
@@ -89,7 +85,7 @@ func setChoices():
 	$choice2/choiceText.bbcode_text = choice2Dict["text"]
 	$choice1.show()
 	$choice2.show()
-	$arrow.hide()
+	#$arrow.hide()
 	makingChoice = true
 
 func clearVars():
@@ -102,7 +98,7 @@ func clearVars():
 	choice1Dict = {}
 	choice2Dict = {}
 	choice = 0
-	$arrow.show()
+	#$arrow.show()
 
 func selectingChoice(choiceMade):
 	phraseIndex = 0

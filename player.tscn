@@ -185,7 +185,7 @@ position = Vector2( 0, 24 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, -48 )
+position = Vector2( 0, -30 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 2 )
