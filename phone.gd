@@ -24,7 +24,7 @@ func homehide():
 	$SettingsBtmIcon.hide()
 
 func _on_StartBtn_pressed():
-	homehide()
+	homehide() #REPLACE WITH SCENE CHANGER
 	$TextboxBG.show()
 	$Text.show()
 	emit_signal("dialogue", "000")

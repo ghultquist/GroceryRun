@@ -59,7 +59,6 @@ func goto(scene):
 	$end/AnimationPlayer.play_backwards("fade")
 	if current_scene == "phone":
 		phone.queue_free()
-	
 	if scene == "phone":
 		sceneLoad = phone.instance()
 	elif scene == "jumpinglizard":
