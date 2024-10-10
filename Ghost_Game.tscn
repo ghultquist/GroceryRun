@@ -1,0 +1,244 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Assets/ghost_game.png" type="Texture" id=1]
+[ext_resource path="res://Assets/BG_NightSky_3-3.png" type="Texture" id=2]
+[ext_resource path="res://player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://street_tiles.tres" type="TileSet" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Jump"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Walk"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "attackend"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 9, 8 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "attackstart"
+length = 2.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 10 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "damagetaken"
+length = 0.99
+step = 0.33
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.33, 0.66 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 17, 18 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "fall"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 11, 10 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "grabbed"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "land"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 9, 8 ]
+}
+
+[sub_resource type="TileSet" id=13]
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 197, 0.75 )
+
+[node name="Ghost_Game" type="Node2D"]
+
+[node name="Sky" type="Sprite" parent="."]
+position = Vector2( 0, -17 )
+scale = Vector2( 1.26563, 1 )
+texture = ExtResource( 2 )
+
+[node name="Forest" type="Sprite" parent="."]
+position = Vector2( 0, -17 )
+texture = ExtResource( 1 )
+
+[node name="Floor" type="TileMap" parent="."]
+position = Vector2( -751, 308 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -196559, 3, 0, -65539, 3, 0, -131023, 3, 0, -3, 3, 0, -65487, 3, 0, 65533, 3, 0, 49, 3, 0, 131070, 3, 0, 131071, 3, 0, 65536, 3, 0, 65537, 3, 0, 65538, 3, 0, 65539, 3, 0, 65540, 3, 0, 65541, 3, 0, 65542, 3, 0, 65543, 3, 0, 65544, 3, 0, 65545, 3, 0, 65546, 3, 0, 65547, 3, 0, 65548, 3, 0, 65549, 3, 0, 65550, 3, 0, 65551, 3, 0, 65552, 3, 0, 65553, 3, 0, 65554, 3, 0, 65555, 3, 0, 65556, 3, 0, 65557, 3, 0, 65558, 3, 0, 65559, 3, 0, 65560, 3, 0, 65561, 3, 0, 65562, 3, 0, 65563, 3, 0, 65564, 3, 0, 65565, 3, 0, 65566, 3, 0, 65567, 3, 0, 65568, 3, 0, 65569, 3, 0, 65570, 3, 0, 65571, 3, 0, 65572, 3, 0, 65573, 3, 0, 65574, 3, 0, 65575, 3, 0, 65576, 3, 0, 65577, 3, 0, 65578, 3, 0, 65579, 3, 0, 65580, 3, 0, 65581, 3, 0, 65582, 3, 0, 65583, 3, 0, 65584, 3, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( -785, 292 )
+
+[node name="TopLeft" parent="Player/Camera2D/Limits" index="0"]
+position = Vector2( -802, -366 )
+
+[node name="BottomRight" parent="Player/Camera2D/Limits" index="1"]
+position = Vector2( 809, 345 )
+
+[node name="AnimationPlayer" parent="Player" index="3"]
+anims/Idle = SubResource( 1 )
+anims/Jump = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+anims/Walk = SubResource( 4 )
+anims/attackend = SubResource( 5 )
+anims/attackstart = SubResource( 6 )
+anims/damagetaken = SubResource( 7 )
+anims/fall = SubResource( 8 )
+anims/grabbed = SubResource( 9 )
+anims/land = SubResource( 10 )
+
+[node name="Branches" type="TileMap" parent="."]
+position = Vector2( 126, -3 )
+tile_set = SubResource( 13 )
+cell_size = Vector2( 28, 3 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( -3342304, 2, 0, -3342303, 2, 0, -3342302, 2, 0, -3342301, 2, 0, -3342300, 2, 0, -3342299, 2, 0, -3342298, 2, 0, -3342297, 2, 0, -3342296, 2, 0, -3342295, 2, 0, -3342294, 2, 0, -3342293, 2, 0, -3342292, 2, 0, -3342291, 2, 0, -3276768, 2, 0, -3276767, 2, 0, -3276766, 2, 0, -3276765, 2, 0, -3276764, 2, 0, -3276763, 2, 0, -3276762, 2, 0, -3276761, 2, 0, -3276760, 2, 0, -3276759, 2, 0, -3276758, 2, 0, -3276757, 2, 0, -3276756, 2, 0, -3276755, 2, 0, -1507296, 2, 0, -1507295, 2, 0, -1507294, 2, 0, -1507293, 2, 0, -1507292, 2, 0, -1507291, 2, 0, -1507290, 2, 0, -1507289, 2, 0, -1507288, 2, 0, -1507287, 2, 0, -1507286, 2, 0, -1507285, 2, 0, -1507284, 2, 0, -1507283, 2, 0, 524320, 2, 0, 524321, 2, 0, 524322, 2, 0, 524323, 2, 0, 524324, 2, 0, 524325, 2, 0, 524326, 2, 0, 524327, 2, 0, 524328, 2, 0, 524329, 2, 0, 524330, 2, 0, 524331, 2, 0, 524332, 2, 0, 524333, 2, 0 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Branches"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="periwinklebuild1" type="CollisionShape2D" parent="Branches/StaticBody2D"]
+position = Vector2( 1093, -152 )
+shape = SubResource( 12 )
+one_way_collision = true
+
+[node name="periwinklebuild2" type="CollisionShape2D" parent="Branches/StaticBody2D"]
+position = Vector2( 1093, -68 )
+shape = SubResource( 12 )
+one_way_collision = true
+
+[node name="periwinklebuild3" type="CollisionShape2D" parent="Branches/StaticBody2D"]
+position = Vector2( 1093, 25.5 )
+shape = SubResource( 12 )
+one_way_collision = true
+
+[editable path="Player"]
+[editable path="Player/Camera2D"]

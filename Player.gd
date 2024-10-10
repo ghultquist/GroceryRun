@@ -15,12 +15,12 @@ var can_move = true
 var health = 3
 
 func _ready():
-	if get_parent().name == "world":
-		var devourernode = get_tree().get_root().find_node("Devourer", true, false)
-		devourernode.connect("attack", self, "beingattacked")
-		devourernode.connect("attack_over", self, "beingreleased")
-		devourernode.connect("damage", self, "takendamage")
-		stats.connect("no_health", self, "queue_free")
+#	if get_parent().name == "world":
+#		var devourernode = get_tree().get_root().find_node("Devourer", true, false)
+#		devourernode.connect("attack", self, "beingattacked")
+#		devourernode.connect("attack_over", self, "beingreleased")
+#		devourernode.connect("damage", self, "takendamage")
+	stats.connect("no_health", self, "queue_free")
 	
 	set_sprite()
 

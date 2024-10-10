@@ -14,7 +14,8 @@ var d
 signal dialogue_finished
 
 func _ready():
-	phoneIntro()
+	#phoneIntro()
+	get_tree().change_scene("res://world.tscn")
 
 func _process(delta):
 	pass
