@@ -225,15 +225,6 @@ position = Vector2( 1093, 25.5 )
 shape = SubResource( 8 )
 one_way_collision = true
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -415, 8 )
-
-[node name="TopLeft" parent="Player/Camera2D/Limits" index="0"]
-position = Vector2( -223, -368 )
-
-[node name="BottomRight" parent="Player/Camera2D/Limits" index="1"]
-position = Vector2( 5824, 320 )
-
 [node name="tentacles" type="Sprite" parent="."]
 visible = false
 position = Vector2( -101, 4 )
@@ -261,6 +252,15 @@ position = Vector2( 2443, 8 )
 texture = ExtResource( 3 )
 hframes = 4
 vframes = 5
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( -415, 8 )
+
+[node name="TopLeft" parent="Player/Camera2D/Limits" index="0"]
+position = Vector2( -223, -368 )
+
+[node name="BottomRight" parent="Player/Camera2D/Limits" index="1"]
+position = Vector2( 5824, 320 )
 
 [connection signal="body_entered" from="Ghost/Ghost_Area2D" to="." method="_on_Ghost_Area2D_body_entered"]
 [connection signal="body_exited" from="Ghost/Ghost_Area2D" to="." method="_on_Ghost_Area2D_body_exited"]
