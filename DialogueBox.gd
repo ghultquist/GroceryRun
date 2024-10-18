@@ -4,6 +4,7 @@ signal finished
 signal ending
 signal goto
 signal next
+signal game
 
 onready var stats = get_tree().get_root().find_node("Stats", true, false)
 onready var main = get_tree().get_root().find_node("Main", true, false)
@@ -73,6 +74,7 @@ func selectDialogue(dialogueSelection):
 		setDialogue()
 
 func applyEffect():
+	print("applying effect")
 	var type = commandDict["type"]
 	var specific = commandDict["specific"]
 	
@@ -123,8 +125,8 @@ func setDialogue():
 		setChoices()
 	else:
 		emit_signal("finished")
-#		if len(commandDict) != 0:
-#			applyEffect()
+		if len(commandDict) != 0:
+			applyEffect()
 		clearVars()
 		queue_free()
 		finished = true

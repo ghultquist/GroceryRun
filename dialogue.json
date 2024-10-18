@@ -105,17 +105,58 @@
         "choices": {},
         "commands": []
     },    
-    "108" : {
-        "type": "", 
-        "speaker_id": "", 
-        "text": [""],
-        "choices": {},
+    "ghost_approach" : {
+        "type": "narrative", 
+        "speaker_id": "X", 
+        "text": ["Approaching the figure you see it appears to be an apparition of a little girl…"],
+        "choices": {
+            "choice1" : {"text": "AHHH! GHOST!!", "next" : "ghost_scared"},
+            "choice2" : {"text" : "Hey, are you okay?", "next": "ghost_intro"}
+        },
         "commands": []
     },
-    "109" : {
-        "type": "", 
-        "speaker_id": "", 
-        "text": [""],
+    "ghost_scared" : {
+        "type": "speaking", 
+        "speaker_id": "ghost", 
+        "text": ["AHH! WHERE??"],
+        "choices": {},
+        "commands": {"type": "next", "specific":"ghost_exit_unhelped"}
+    },
+    "ghost_exit_unhelped" : {
+        "type": "speaking", 
+        "speaker_id": "X", 
+        "text": ["Well, that was creepy... Now, where was I…"],
+        "choices": {},
+        "commands": {"type": "game", "specific":"retune"}
+    },
+    "ghost_intro" : {
+        "type": "speaking", 
+        "speaker_id": "ghost", 
+        "text": ["No, my cat ran into the woods and I can’t find him…", "(this could be a trick to get you into the woods... alone... at night...)"],
+        "choices": {
+            "choice1" : {"text": "I’m in a bit of a hurry… but I can help with that!", "next" : "ghost_game"},
+            "choice2" : {"text" : "I’m sorry… Good luck finding him!", "next": "ghost_exit_unhelped"}
+        },
+        "commands": []
+    },
+    "ghost_game" : {
+        "type": "speaking", 
+        "speaker_id": "ghost", 
+        "text": ["Thank you so much!!! I'll never let little Laszlo out of my sight again..."],
+        "choices": {},
+        "commands": {"type": "next", "specific":"ghost_exit_helped"}
+    },
+    "ghost_exit_helped" : {
+        "type": "speaking", 
+        "speaker_id": "X", 
+        "text": ["I’m glad I could help! Wait, what was I doing again? "],
+        "choices": {},
+        "commands": {"type": "game", "specific":"retune"}
+    },
+    "retuned" : {
+        "type": "thought", 
+        "speaker_id": "X", 
+        "text": ["Oh yeah! To the store we go..."],
         "choices": {},
         "commands": []
     },
@@ -124,6 +165,6 @@
         "speaker_id": "", 
         "text": [""],
         "choices": {},
-        "commands": []
+        "commands": {}
     }
 }

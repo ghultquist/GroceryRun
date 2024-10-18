@@ -2,7 +2,10 @@ extends Node2D
 
 #DIALOGUE VARS
 const dialogueBoxScene = preload("res://dialogue.tscn")
+const retuneScene = "res://retune.tscn"
 signal dialogue
+signal dialogue_finished
+
 #signal dialogue_finished
 var d
 var commandReceived = false
@@ -22,8 +25,9 @@ func dialogue(dIndex):
 	self.add_child(d)
 	d.get_child(0).connect("ending", self, "ending")
 	d.get_child(0).connect("goto", self, "goto")
-	#d.get_child(0).connect("next", self, "dialogue")
+	d.get_child(0).connect("next", self, "nextdialogue")
 	d.get_child(0).connect("finished", self, "dialogueEnd")
+	d.get_child(0).connect("game", self, "playgame")
 	d.get_child(0).selectDialogue(dIndex)
 
 func goto(scene):
@@ -31,7 +35,20 @@ func goto(scene):
 
 func dialogueEnd():
 	$Player.can_move = true
-	#emit_signal("dialogue_finished")
+	emit_signal("dialogue_finished")
+
+func playgame(g):
+	print("got signal")
+	if d.get_child(0):
+		yield(d.get_child(0), "finished")
+	if g == "retune":
+		print("retuning")
+		get_tree().change_scene(retuneScene)
+
+func nextdialogue(dname):
+	if d.get_child(0):
+		yield(d.get_child(0), "finished")
+	dialogue(dname)
 
 func _on_Ghost_Area2D_body_entered(body):
 	ghost_entered = true
@@ -45,7 +62,7 @@ func _on_Ghost_Area2D_body_exited(body):
 func _process(delta):
 	if Input.is_action_just_pressed("ui_select"):
 		if ghost_entered:
-			dialogue("000")
+			dialogue("ghost_approach")
 		elif teeth_entered:
 			pass
 		elif circus_entered:
