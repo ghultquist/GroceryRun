@@ -1,31 +1,41 @@
 extends Node2D
 
 var groceries = ["bean", "peas", "eggs", "feta", "soup", "corn", "pear", "rice", "lime"]
-var labels = [$letter0, $letter1, $letter2, $letter3]
 var alphabet = "abcdefghijklmnopqrstuvwxyz"
+var animations = ["static4layers","static3layers", "static2layers", "static1layer", "staticoff"]
+
+#tracking guess numbers
+var guessnum = 0
+
+#which letter is active
+var index = 0
+
+#indexes for letter selections 
+var index0 = 0
+var index1 = 0
+var index2 = 0
+var index3 = 0
+var indexes = [index0, index1, index2, index3]
+
+#lists of letter options
+var letter0_list = []
+var letter1_list = []
+var letter2_list = []
+var letter3_list = []
+var letter_lists = [letter0_list, letter1_list, letter2_list, letter3_list]
+
+var item
+var labels
 
 
 func _ready():
 	randomize()
-	var groceries = ["bean", "peas", "eggs", "feta", "soup", "corn", "pear", "rice", "lime"]
-	var labels = [$letter0, $letter1, $letter2, $letter3]
-	var alphabet = "abcdefghijklmnopqrstuvwxyz"
-	var item = groceries[randi() % len(groceries)-1]
-	var guess = ""
-	var guessnum = 0
+	$face.hide()
+	labels = [$letter0, $letter1, $letter2, $letter3]
+	#Choosing item to guess
+	item = groceries[randi() % len(groceries)-1]
 	
-	var labelindex = 0
-	var label0index = 0
-	var label1index = 0
-	var label2index = 0
-	var label3index = 0
-	
-	var letter0_list = []
-	var letter1_list = []
-	var letter2_list = []
-	var letter3_list = []
-	var letter_lists = [letter0_list, letter1_list, letter2_list, letter3_list]
-	
+	#randomizing letter lists
 	var list_index = 0
 	for letters in letter_lists:
 		letters.append(item[list_index])
@@ -36,20 +46,37 @@ func _ready():
 		letters.shuffle()
 		list_index +=1
 	
+	#printing for testing
 	print(letter_lists)
 	print(item)
-	labels[0].bbcode_text = letter_lists[0][0]
+	
+	#displaying first letter
+	labels[index].bbcode_text = letter_lists[index][indexes[index] % 5]
 
 
 
 
 func _on_down_pressed():
-	labels[0].bbcode_text = letter_lists[0][0]
+	indexes[index] -= 1
+	labels[index].bbcode_text = letter_lists[index][indexes[index] % 5]
 
 
 func _on_up_pressed():
-	pass # Replace with function body.
+	indexes[index] += 1
+	labels[index].bbcode_text = letter_lists[index][indexes[index] % 5]
 
 
 func _on_submit_pressed():
-	pass # Replace with function body.
+	if index < 4:
+		if letter_lists[index][indexes[index] % 5] == item[index]:
+			index += 1
+			if index < 4:
+				labels[index].bbcode_text = letter_lists[index][indexes[index] % 5]
+			else:
+				print("You got it!")
+				$face.show()
+				$face/AnimationPlayer.play("bounce")
+			$StaticPlayer.play(animations[index])
+		else:
+			print("Not quite...")
+		guessnum +=1

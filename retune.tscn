@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Assets/retuning/TVBG.png" type="Texture" id=1]
 [ext_resource path="res://Assets/retuning/sky.png" type="Texture" id=2]
@@ -10,6 +10,11 @@
 [ext_resource path="res://Assets/retuning/static2.png" type="Texture" id=8]
 [ext_resource path="res://retune.gd" type="Script" id=9]
 [ext_resource path="res://Assets/Fonts/Silkscreen/Silkscreen-Bold.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Assets/retuning/letterbox.png" type="Texture" id=11]
+[ext_resource path="res://Assets/retuning/lime.png" type="Texture" id=12]
+[ext_resource path="res://Assets/retuning/static4.png" type="Texture" id=13]
+[ext_resource path="res://Assets/retuning/static5.png" type="Texture" id=14]
+[ext_resource path="res://Assets/retuning/facehappy.png" type="Texture" id=15]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -61,10 +66,22 @@ tracks/3/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("static5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "static1layer"
-length = 2.0
+length = 2.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("static1:visible")
@@ -109,7 +126,19 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.5 ),
+"times": PoolRealArray( 0, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("static5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -117,7 +146,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "static2layers"
-length = 2.0
+length = 3.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("static1:visible")
@@ -126,10 +155,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, false, false, true ]
+"values": [ true, false, false, true, false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("static2:visible")
@@ -138,10 +167,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, false, true, false ]
+"values": [ false, false, true, false, true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("static3:visible")
@@ -150,10 +179,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, true, false ]
+"values": [ false, true, false, true, false ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("static4:visible")
@@ -162,15 +191,27 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, false, true ]
+"values": [ false, true, false, true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("static5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false ]
 }
 
 [sub_resource type="Animation" id=2]
 resource_name = "static3layers"
-length = 2.0
+length = 3.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("static1:visible")
@@ -179,10 +220,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, true, true ]
+"values": [ false, true, true, false, true, false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("static2:visible")
@@ -191,10 +232,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, true, false, true ]
+"values": [ true, false, true, true, false, true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("static3:visible")
@@ -203,10 +244,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, false, true, true ]
+"values": [ true, false, true, false, true, true ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("static4:visible")
@@ -215,10 +256,150 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, true, true, false ]
+"values": [ true, true, false, true, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("static5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "static4layers"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("static1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("static2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("static3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("static4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("static5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "staticoff"
+tracks/0/type = "value"
+tracks/0/path = NodePath("static1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("static2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("static3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("static4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("static5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="DynamicFont" id=5]
@@ -228,12 +409,57 @@ font_data = ExtResource( 10 )
 [sub_resource type="Theme" id=6]
 default_font = SubResource( 5 )
 
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 316, 182 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "bounce"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 316, 182 ), Vector2( 316, 175 ) ]
+}
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 9 )
 
 [node name="tvbg" type="Sprite" parent="."]
 position = Vector2( 320, 180 )
 texture = ExtResource( 1 )
+
+[node name="food" type="Sprite" parent="."]
+position = Vector2( 320, 180 )
+texture = ExtResource( 12 )
+
+[node name="static4" type="Sprite" parent="."]
+visible = false
+position = Vector2( 320, 180 )
+texture = ExtResource( 13 )
+
+[node name="static5" type="Sprite" parent="."]
+visible = false
+position = Vector2( 320, 180 )
+texture = ExtResource( 14 )
 
 [node name="static1" type="Sprite" parent="."]
 position = Vector2( 320, 180 )
@@ -247,10 +473,14 @@ texture = ExtResource( 8 )
 position = Vector2( 320, 180 )
 texture = ExtResource( 5 )
 
-[node name="static4" type="Sprite" parent="."]
-visible = false
-position = Vector2( 320, 180 )
-texture = ExtResource( 5 )
+[node name="StaticPlayer" type="AnimationPlayer" parent="."]
+autoplay = "static4layers"
+anims/RESET = SubResource( 1 )
+anims/static1layer = SubResource( 3 )
+anims/static2layers = SubResource( 4 )
+anims/static3layers = SubResource( 2 )
+anims/static4layers = SubResource( 7 )
+anims/staticoff = SubResource( 8 )
 
 [node name="sky" type="Sprite" parent="."]
 position = Vector2( 320, 180 )
@@ -285,26 +515,26 @@ margin_right = 508.0
 margin_bottom = 316.0
 texture_normal = ExtResource( 4 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "static3layers"
-anims/RESET = SubResource( 1 )
-anims/static1layer = SubResource( 3 )
-anims/static2layers = SubResource( 4 )
-anims/static3layers = SubResource( 2 )
+[node name="letterbox" type="Sprite" parent="."]
+position = Vector2( 406.5, 113.5 )
+scale = Vector2( 0.217187, 0.130556 )
+texture = ExtResource( 11 )
 
 [node name="letter0" type="RichTextLabel" parent="."]
 margin_left = 342.0
 margin_top = 91.0
-margin_right = 372.0
+margin_right = 378.0
 margin_bottom = 136.0
 theme = SubResource( 6 )
 custom_colors/default_color = Color( 0.321569, 1, 0.321569, 1 )
+bbcode_enabled = true
+bbcode_text = "_"
 text = "_"
 
 [node name="letter1" type="RichTextLabel" parent="."]
 margin_left = 376.0
 margin_top = 91.0
-margin_right = 406.0
+margin_right = 412.0
 margin_bottom = 136.0
 theme = SubResource( 6 )
 custom_colors/default_color = Color( 0.321569, 1, 0.321569, 1 )
@@ -313,7 +543,7 @@ text = "_"
 [node name="letter2" type="RichTextLabel" parent="."]
 margin_left = 410.0
 margin_top = 91.0
-margin_right = 440.0
+margin_right = 449.0
 margin_bottom = 136.0
 theme = SubResource( 6 )
 custom_colors/default_color = Color( 0.321569, 1, 0.321569, 1 )
@@ -322,11 +552,20 @@ text = "_"
 [node name="letter3" type="RichTextLabel" parent="."]
 margin_left = 444.0
 margin_top = 91.0
-margin_right = 474.0
+margin_right = 486.0
 margin_bottom = 136.0
 theme = SubResource( 6 )
 custom_colors/default_color = Color( 0.321569, 1, 0.321569, 1 )
 text = "_"
+
+[node name="face" type="Sprite" parent="."]
+visible = false
+position = Vector2( 316, 182 )
+texture = ExtResource( 15 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="face"]
+anims/RESET = SubResource( 9 )
+anims/bounce = SubResource( 10 )
 
 [connection signal="pressed" from="down" to="." method="_on_down_pressed"]
 [connection signal="pressed" from="up" to="." method="_on_up_pressed"]
