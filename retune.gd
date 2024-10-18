@@ -25,6 +25,7 @@ var letter3_list = []
 var letter_lists = [letter0_list, letter1_list, letter2_list, letter3_list]
 
 var item
+var item_image
 var labels
 
 
@@ -34,6 +35,8 @@ func _ready():
 	labels = [$letter0, $letter1, $letter2, $letter3]
 	#Choosing item to guess
 	item = groceries[randi() % len(groceries)-1]
+	item_image = "res://Assets/retuning/" + item + ".png"
+	$food.texture = load(item_image)
 	
 	#randomizing letter lists
 	var list_index = 0
