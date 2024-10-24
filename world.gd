@@ -16,7 +16,17 @@ var teeth_entered = false
 var circus_entered = false
 
 func _ready():
-	pass
+	var spawnposition
+	if Stats.current_location == "firstspawn":
+		spawnposition = $Start.global_position
+	elif Stats.current_location == "ghostspawn":
+		spawnposition = $Ghost.global_position 
+	elif Stats.current_location == "teethspawn":
+		spawnposition = $Teeth.global_position
+	elif Stats.current_location == "circusspawn":
+		spawnposition = $Start.global_position
+	spawnposition.x -= 30
+	$Player.global_position = spawnposition
 
 
 func dialogue(dIndex):
@@ -62,9 +72,10 @@ func _on_Ghost_Area2D_body_exited(body):
 func _process(delta):
 	if Input.is_action_just_pressed("ui_select"):
 		if ghost_entered:
+			Stats.current_location = "ghostspawn"
 			dialogue("ghost_approach")
 		elif teeth_entered:
-			pass
+			Stats.current_location = "teethspawn"
 		elif circus_entered:
-			pass
+			Stats.current_location = "circusspawn"
 		

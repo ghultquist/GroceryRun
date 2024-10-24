@@ -37,6 +37,9 @@ func _ready():
 	#Choosing item to guess
 	item = groceries[randi() % len(groceries)-1]
 	item_image = "res://Assets/retuning/" + item + ".png"
+	$good.hide()
+	$bad.hide()
+	$food.show()
 	$food.texture = load(item_image)
 	$thoughts.bbcode_text = "Agh, what did I need again..."
 	$thoughts/AnimationPlayer.play("bounce")

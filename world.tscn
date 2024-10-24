@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://street_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
@@ -215,6 +215,9 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 17.5, 29.5 )
+
 [node name="world" type="Node2D"]
 position = Vector2( 417, 220 )
 script = ExtResource( 13 )
@@ -347,6 +350,13 @@ position = Vector2( -223, -368 )
 
 [node name="BottomRight" parent="Player/Camera2D/Limits" index="1"]
 position = Vector2( 5824, 320 )
+
+[node name="Start" type="Area2D" parent="."]
+position = Vector2( -490, 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start"]
+position = Vector2( 8, 24 )
+shape = SubResource( 14 )
 
 [connection signal="body_entered" from="Ghost/Ghost_Area2D" to="." method="_on_Ghost_Area2D_body_entered"]
 [connection signal="body_exited" from="Ghost/Ghost_Area2D" to="." method="_on_Ghost_Area2D_body_exited"]

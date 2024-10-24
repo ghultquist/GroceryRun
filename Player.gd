@@ -10,7 +10,7 @@ const ACCEL = 10
 var motion = Vector2()
 var facing_right = true
 var jump_count = 0
-var stats = PlayerStats
+#var stats = PlayerStats
 var can_move = true
 var health = 3
 
@@ -20,7 +20,7 @@ func _ready():
 #		devourernode.connect("attack", self, "beingattacked")
 #		devourernode.connect("attack_over", self, "beingreleased")
 #		devourernode.connect("damage", self, "takendamage")
-	stats.connect("no_health", self, "queue_free")
+	#stats.connect("no_health", self, "queue_free")
 	
 	set_sprite()
 
