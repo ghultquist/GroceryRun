@@ -90,7 +90,6 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 
 [node name="Stats" parent="." instance=ExtResource( 2 )]
-max_health = 1
 
 [node name="end" type="Sprite" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )

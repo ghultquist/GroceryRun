@@ -2,11 +2,10 @@ extends Node2D
 
 #DIALOGUE VARS
 const dialogueBoxScene = preload("res://dialogue.tscn")
+const introScene = preload("res://intro.tscn")
 const retuneScene = "res://retune.tscn"
 signal dialogue
 signal dialogue_finished
-
-#signal dialogue_finished
 var d
 var commandReceived = false
 
@@ -18,6 +17,10 @@ var circus_entered = false
 func _ready():
 	var spawnposition
 	if Stats.current_location == "firstspawn":
+		var i = introScene.instance()
+		self.add_child(i)
+		i.get_child(0).connect("dialogue_sent", self, "dialogue")
+		i.get_child(0).start_intro()
 		spawnposition = $Start.global_position
 	elif Stats.current_location == "ghostspawn":
 		spawnposition = $Ghost.global_position 
@@ -30,6 +33,7 @@ func _ready():
 
 
 func dialogue(dIndex):
+	print("received")
 	$Player.can_move = false
 	d = dialogueBoxScene.instance()
 	self.add_child(d)
