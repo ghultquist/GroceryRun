@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://street_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
@@ -10,10 +10,12 @@
 [ext_resource path="res://Assets/BG_NightSky_3-3twink2.png" type="Texture" id=8]
 [ext_resource path="res://CloudLayer.gd" type="Script" id=9]
 [ext_resource path="res://Assets/BG-Buildings.png" type="Texture" id=10]
+[ext_resource path="res://Assets/circus_sprite.png" type="Texture" id=11]
 [ext_resource path="res://StarLayer.gd" type="Script" id=12]
 [ext_resource path="res://world.gd" type="Script" id=13]
 [ext_resource path="res://Stats.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Assets/ghost_sprite.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprite-JL-purpleghostaseprite.png" type="Texture" id=16]
 
 [sub_resource type="Animation" id=5]
 length = 10.0
@@ -135,9 +137,8 @@ load_path = "res://.import/windowsill.png-54945b7a992a0bcd7e37c2e23283860b.stex"
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 197, 0.75 )
 
-[sub_resource type="CapsuleShape2D" id=9]
-radius = 42.0
-height = 6.0
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 118, 43.5 )
 
 [sub_resource type="Animation" id=10]
 length = 0.001
@@ -152,6 +153,34 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 299, 8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -170,6 +199,12 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 299, 9 ), Vector2( 299, 5 ) ]
 }
+
+[sub_resource type="CircleShape2D" id=19]
+radius = 48.5077
+
+[sub_resource type="CircleShape2D" id=17]
+radius = 56.0357
 
 [sub_resource type="Animation" id=12]
 length = 0.001
@@ -214,6 +249,41 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 1 ]
 }
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "glancing"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="CircleShape2D" id=18]
+radius = 62.9682
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 17.5, 29.5 )
@@ -314,6 +384,7 @@ vframes = 2
 [node name="Stats" parent="." instance=ExtResource( 14 )]
 
 [node name="Ghost" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 299, 8 )
 texture = ExtResource( 15 )
 hframes = 2
@@ -323,13 +394,23 @@ vframes = 2
 position = Vector2( -178, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ghost/Ghost_Area2D"]
-position = Vector2( 176, 0 )
-shape = SubResource( 9 )
+position = Vector2( 176, -0.5 )
+shape = SubResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ghost"]
 autoplay = "float"
 anims/RESET = SubResource( 10 )
+anims/fade = SubResource( 21 )
 anims/float = SubResource( 11 )
+
+[node name="Dad" type="Sprite" parent="."]
+position = Vector2( 1466, 4 )
+texture = ExtResource( 16 )
+
+[node name="Dad_Area" type="Area2D" parent="Dad"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dad/Dad_Area"]
+shape = SubResource( 19 )
 
 [node name="Teeth" type="Sprite" parent="."]
 position = Vector2( 2443, 8 )
@@ -337,10 +418,32 @@ texture = ExtResource( 3 )
 hframes = 4
 vframes = 5
 
+[node name="Teeth_Area" type="Area2D" parent="Teeth"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teeth/Teeth_Area"]
+position = Vector2( 29, -9 )
+shape = SubResource( 17 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Teeth"]
 autoplay = "teeth_talking"
 anims/RESET = SubResource( 12 )
 anims/teeth_talking = SubResource( 13 )
+
+[node name="Circus" type="Sprite" parent="."]
+position = Vector2( 4154, -9 )
+texture = ExtResource( 11 )
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Circus"]
+autoplay = "glancing"
+anims/RESET = SubResource( 15 )
+anims/glancing = SubResource( 16 )
+
+[node name="Circus_Area" type="Area2D" parent="Circus"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Circus/Circus_Area"]
+position = Vector2( 9, 0 )
+shape = SubResource( 18 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -415, 8 )
@@ -360,6 +463,12 @@ shape = SubResource( 14 )
 
 [connection signal="body_entered" from="Ghost/Ghost_Area2D" to="." method="_on_Ghost_Area2D_body_entered"]
 [connection signal="body_exited" from="Ghost/Ghost_Area2D" to="." method="_on_Ghost_Area2D_body_exited"]
+[connection signal="body_entered" from="Dad/Dad_Area" to="." method="_on_Dad_Area_body_entered"]
+[connection signal="body_exited" from="Dad/Dad_Area" to="." method="_on_Dad_Area_body_exited"]
+[connection signal="body_entered" from="Teeth/Teeth_Area" to="." method="_on_Teeth_Area_body_entered"]
+[connection signal="body_exited" from="Teeth/Teeth_Area" to="." method="_on_Teeth_Area_body_exited"]
+[connection signal="body_entered" from="Circus/Circus_Area" to="." method="_on_Circus_Area_body_entered"]
+[connection signal="body_exited" from="Circus/Circus_Area" to="." method="_on_Circus_Area_body_exited"]
 
 [editable path="Player"]
 [editable path="Player/Camera2D"]

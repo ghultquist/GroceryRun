@@ -23,7 +23,7 @@ var dialogueIndex = 0
 var phraseIndex = 0
 var finished = true
 var phrasefinished = false
-var textSpeed = 0.05
+var textSpeed = 0.001 #0.05 is original speed
 
 var makingChoice = false
 var choice = 0

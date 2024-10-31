@@ -1,19 +1,19 @@
 extends Node
 
-export(int) var max_health = 1
-onready var health = max_health setget set_health
+var lonely_health = 5
 
-var current_location = "firstspawn"
+var time = 60
 
-var endings = [
-	["ending1", false],
-	["ending2", false], 
-	["ending3", false],
-	["ending4", false]]
+var current_location = "ghostspawn"
 
-signal no_health
+var ghost_success = false
+var ghost_encountered = false
 
-func set_health(value):
-	health = value
-	if health <=0:
-		emit_signal("no_health")
+var dad_success = false
+var dad_encountered = false
+
+var teeth_success = false
+var teeth_encountered = false
+
+var circus_success = false
+var circus_encountered = false

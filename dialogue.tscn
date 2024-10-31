@@ -110,6 +110,7 @@ anims/IDLE = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
 [node name="portrait" type="Sprite" parent="DialogueBox"]
+visible = false
 position = Vector2( 390, -66 )
 texture = ExtResource( 6 )
 
