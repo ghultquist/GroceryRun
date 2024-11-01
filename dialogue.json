@@ -203,7 +203,7 @@
     "ghost_400" : {
         "type": "dialogue", 
         "speaker_id": "ghost", 
-        "text": [" Ah, thank you so much! Isn’t he such a cutie? ^-^"],
+        "text": ["Thank you so much! Isn’t he such a cutie? ^-^"],
         "choices": {
             "choice1" : {"text": "Yeah, you know what he is pretty cute. <3", "next" : "ghost_401"},
             "choice2" : {"text" : "He’s not really my type of… cat, but I’m glad you’re reunited.", "next": "ghost_401"}},
@@ -223,6 +223,160 @@
         "choices": {},
         "commands": {}
     },
+
+
+
+
+
+
+    "dad_000" : {
+        "type": "internal", 
+        "speaker_id": "X", 
+        "text": ["*phone vibrates*"],
+        "choices": {},
+        "commands": {"type": "next", "specific":"dad_100"}
+    },
+    "dad_100" : {
+        "type": "internal", 
+        "speaker_id": "X", 
+        "text": ["Oh shit, it’s dad. I haven’t talked to him in a while… I haven’t had any real, like, life updates.", "At least none I want to talk about…"],
+        "choices": {
+            "choice1" : {"text": "Ignore. Just call him back later or like next week or something.", "next" : "dad_101"},
+            "choice2" : {"text" : "Pick up. I’ve put this off long enough.", "next": "dad_102"}},
+        "commands": {}
+    },
+
+    "dad_101" : {
+        "type": "internal", 
+        "speaker_id": "X", 
+        "text": ["I feel bad for ignoring him like this, but I’m in a hurry and I’ve already been distracted enough.", "Maybe next week I’ll have more to talk to him about…"],
+        "choices": {},
+        "commands": {}
+    },
+
+    "dad_200" : {
+        "type": "dialogue", 
+        "speaker_id": "X", 
+        "text": ["Hi, Dad."],
+        "choices": {},
+        "commands": {"type": "next", "specific":"dad_201"}
+    },
+
+    "dad_201" : {
+        "type": "dialogue", 
+        "speaker_id": "dad", 
+        "text": ["Hey, Sugar! H## ar- ## doing?"],
+        "choices": {},
+        "commands": {"type": "next", "specific":"dad_202"}
+    },
+
+    "dad_202" : {
+        "type": "internal", 
+        "speaker_id": "X", 
+        "text": ["Ugh, the connection on this phone is so shoddy."],
+        "choices": {
+            "choice1" : {"text": "Get to a better place for reception.", "next" : "dad_204"},
+            "choice2" : {"text" : "Call him back later. ", "next": "dad_203"}},
+        "commands": {}
+    },
+
+    "dad_203" : {
+        "type": "dialogue", 
+        "speaker_id": "X", 
+        "text": ["DAD, I HAVE BAD RECEPTION I’LL CALL YOU LATER (why do I think shouting will make the reception better…)"],
+        "choices": {},
+        "commands": {}
+    },
+
+    "dad_204" : {
+        "type": "dialogue", 
+        "speaker_id": "X", 
+        "text": ["One second! Let me get to a better spot to talk…"],
+        "choices": {},
+        "commands": {}
+    },
+
+
+
+    "teeth_100" : {
+        "type": "internal", 
+        "speaker_id": "X", 
+        "text": ["Oh shit, is that Teeth? She texted me she texted me a week ago about…", "Oh that’s right! Her show is tonight. I lied and said I was busy. She looks nervous, maybe I shouldn’t bother her…"],
+        "choices": {
+            "choice1" : {"text": "Talk to her.", "next" : "teeth_101"},
+            "choice2" : {"text" : "Sneak past her", "next": "teeth_102"}
+        },
+        "commands": {}
+    },
+    "teeth_101" : {
+        "type": "dialogue", 
+        "speaker_id": "teeth", 
+        "text": ["YO X! You made it out!"],
+        "choices": {
+            "choice1" : {"text": "Tell the truth.", "next" : "teeth_200"},
+            "choice2" : {"text" : "Lie.", "next": "teeth_201"}},
+        "commands": {}
+    },
+
+    "teeth_102" : {
+        "type": "internal", 
+        "speaker_id": "X", 
+        "text": ["Okay, I don’t THINK she spotted me… I’ll just text her later and ask how it went."],
+        "choices": {},
+        "commands": {}
+    },
+
+    "teeth_200" : {
+        "type": "dialogue", 
+        "speaker_id": "X", 
+        "text": ["Yeah!", "Uh, to be honest I forgot PTAPP was playing tonight. I was on my way to the grocery store since I’ve been putting it off for a few weeks…"],
+        "choices": {},
+        "commands": {"type": "next", "specific":"teeth_300"}
+    },
+
+    "teeth_201" : {
+        "type": "dialogue", 
+        "speaker_id": "X", 
+        "text": ["Sorry, Teeth. I’m actually in a hurry to get to that, uh, thing I have tonight."],
+        "choices": {},
+        "commands": {"type": "next", "specific":"teeth_202"}
+    },
+
+    "teeth_202" : {
+        "type": "dialogue", 
+        "speaker_id": "teeth", 
+        "text": ["Oh, yeah. That’s alright. I’ll just hit you up the next time we’re playing."],
+        "choices": {},
+        "commands": {}
+    },
+    "teeth_300" : {
+        "type": "dialogue", 
+        "speaker_id": "teeth", 
+        "text": ["I figured! I know you’ve got a lot going on right now and have been stressed, so no worries.", "If you gotta go I totally get it, but if you wanted to stay for a song or 2 that’d be rad!", "It always calms my nerves to see one of my adoring fans out in the crowd."],
+        "choices": {
+            "choice1" : {"text": "Yeah, I can stay for a song and show you my new epic dance moves!", "next" : "teeth_301"},
+            "choice2" : {"text" : "The store closes soon, so I should really be going.", "next": "teeth_302"}
+        },
+        "commands": {}
+    },
+    "teeth_301" : {
+        "type": "dialogue", 
+        "speaker_id": "teeth", 
+        "text": ["Hell yeah! That’s what I like to hear. Let’s rock!"],
+        "choices": {},
+        "commands": {}
+    },
+    "teeth_302" : {
+        "type": "dialogue", 
+        "speaker_id": "teeth", 
+        "text": ["No problem. I’ll hit you up next time!"],
+        "choices": {},
+        "commands": {}
+    },
+
+
+
+
     "999" : {
         "type": "", 
         "speaker_id": "", 

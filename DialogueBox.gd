@@ -18,12 +18,14 @@ var choice1Dict
 var choice2Dict
 var commandDict = {}
 var selection 
+var portrait
+var type_dialogue
 
 var dialogueIndex = 0
 var phraseIndex = 0
 var finished = true
 var phrasefinished = false
-var textSpeed = 0.001 #0.05 is original speed
+var textSpeed = 0.03 #0.05 is original speed
 
 var makingChoice = false
 var choice = 0
@@ -66,6 +68,8 @@ func selectDialogue(dialogueSelection):
 
 	dialogueSelectDict = dialogueDict[dialogueSelection]
 	dialogue = dialogueSelectDict["text"]
+	type_dialogue = dialogueSelectDict["type"]
+	portrait = "res://Assets/" + dialogueSelectDict["speaker_id"] + "_portrait.png"
 	choicesDict = dialogueSelectDict["choices"]
 	commandDict = dialogueSelectDict["commands"]
 	if len(commandDict) != 0:
@@ -110,6 +114,18 @@ func selectingChoice(choiceMade):
 		selectDialogue(choice2Dict["next"])
 	
 func setDialogue():
+	if type_dialogue != "dialogue":
+		$portrait.hide()
+		$x_portrait.hide()
+	else:
+		if dialogueSelectDict["speaker_id"] == "X":
+			$portrait.hide()
+			$x_portrait.show()
+		else:
+			$x_portrait.hide()
+			$portrait.texture = load(portrait)
+			$portrait.show()
+		
 	if phraseIndex < dialogue.size():
 		phrasefinished = false
 		$RichTextLabel.bbcode_text = dialogue[phraseIndex]

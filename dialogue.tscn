@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/textbox.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://DialogueBox.gd" type="Script" id=4]
 [ext_resource path="res://dialogueChoice.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/ghost _portrait.png" type="Texture" id=6]
+[ext_resource path="res://Assets/X_portrait.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=5]
 size = 8
@@ -110,9 +111,12 @@ anims/IDLE = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
 [node name="portrait" type="Sprite" parent="DialogueBox"]
-visible = false
 position = Vector2( 390, -66 )
 texture = ExtResource( 6 )
+
+[node name="x_portrait" type="Sprite" parent="DialogueBox"]
+position = Vector2( 95, -65 )
+texture = ExtResource( 7 )
 
 [connection signal="pressed" from="DialogueBox/choice1" to="DialogueBox" method="_on_choice1_pressed"]
 [connection signal="pressed" from="DialogueBox/choice2" to="DialogueBox" method="_on_choice2_pressed"]
