@@ -81,6 +81,7 @@ func applyEffect():
 	print("applying effect")
 	var type = commandDict["type"]
 	var specific = commandDict["specific"]
+	commandDict = {}
 	
 	emit_signal(type, specific)
 	
@@ -121,7 +122,7 @@ func setDialogue():
 		if dialogueSelectDict["speaker_id"] == "X":
 			$portrait.hide()
 			$x_portrait.show()
-		else:
+		elif dialogueSelectDict["speaker_id"] != "dad":
 			$x_portrait.hide()
 			$portrait.texture = load(portrait)
 			$portrait.show()
@@ -141,8 +142,8 @@ func setDialogue():
 		setChoices()
 	else:
 		emit_signal("finished")
-		if len(commandDict) != 0:
-			applyEffect()
 		clearVars()
 		queue_free()
 		finished = true
+		if len(commandDict) != 0:
+			applyEffect()

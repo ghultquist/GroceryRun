@@ -68,7 +68,7 @@ texture_normal = ExtResource( 1 )
 script = ExtResource( 3 )
 
 [node name="Arrow" type="Sprite" parent="."]
-position = Vector2( 111.286, 24 )
+position = Vector2( 148.25, 24 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -164,7 +164,6 @@ position = Vector2( 31.25, 51.25 )
 shape = SubResource( 10 )
 
 [node name="QTdevourerBar" parent="." instance=ExtResource( 3 )]
-visible = false
 margin_left = -184.0
 margin_top = -120.0
 margin_right = 76.0

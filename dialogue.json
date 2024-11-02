@@ -189,7 +189,7 @@
     "ghost_302" : {
         "type": "internal", 
         "speaker_id": "X", 
-        "text": ["She reaches out and touches our hand. We feel a searing pain radiate from our left palm as a series of symbols appear."],
+        "text": ["What the hell?? That hurt & now there's these symbols seared into my hand???"],
         "choices": {},
         "commands": {"type": "next", "specific":"ghost_303"}
     },
@@ -242,7 +242,7 @@
         "text": ["Oh shit, it’s dad. I haven’t talked to him in a while… I haven’t had any real, like, life updates.", "At least none I want to talk about…"],
         "choices": {
             "choice1" : {"text": "Ignore. Just call him back later or like next week or something.", "next" : "dad_101"},
-            "choice2" : {"text" : "Pick up. I’ve put this off long enough.", "next": "dad_102"}},
+            "choice2" : {"text" : "Pick up. I’ve put this off long enough.", "next": "dad_200"}},
         "commands": {}
     },
 
@@ -293,7 +293,30 @@
         "speaker_id": "X", 
         "text": ["One second! Let me get to a better spot to talk…"],
         "choices": {},
-        "commands": {}
+        "commands": {"type": "game", "specific" : "dadcall"}
+    },
+
+    "dad_301" : {
+        "type": "internal", 
+        "speaker_id": "X", 
+        "text": ["I feel bad for lying to him like that, but everything just sucks right now and I don't want to put that on him.", "I can handle it myself.", "Now what was I doing..."],
+        "choices": {},
+        "commands": {"type": "game", "specific" : "retune"}
+    },
+
+    "dad_302" : {
+        "type": "internal", 
+        "speaker_id": "X", 
+        "text": ["That took a little longer than I'd have liked, but it felt good to be honest with him about.", "Okay, let's focus on the task at hand..."],
+        "choices": {},
+        "commands": {"type": "game", "specific" : "retune"}
+    },
+    "dad_303" : {
+        "type": "internal", 
+        "speaker_id": "X", 
+        "text": ["That took a little longer than I'd have liked, but it felt good to be honest with him about my feelings.", "Although sometimes it might be good to try to be more positive...", "Okay, let's focus on the task at hand..."],
+        "choices": {},
+        "commands": {"type": "game", "specific" : "retune"}
     },
 
 
@@ -301,7 +324,7 @@
     "teeth_100" : {
         "type": "internal", 
         "speaker_id": "X", 
-        "text": ["Oh shit, is that Teeth? She texted me she texted me a week ago about…", "Oh that’s right! Her show is tonight. I lied and said I was busy. She looks nervous, maybe I shouldn’t bother her…"],
+        "text": ["Oh shit, is that Teeth? She texted me a week ago about…", "Oh that’s right! Her show is tonight. I lied and said I was busy. She looks nervous, maybe I shouldn’t bother her…"],
         "choices": {
             "choice1" : {"text": "Talk to her.", "next" : "teeth_101"},
             "choice2" : {"text" : "Sneak past her", "next": "teeth_102"}

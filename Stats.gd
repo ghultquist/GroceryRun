@@ -2,9 +2,9 @@ extends Node
 
 var lonely_health = 5
 
-var time = 60
+var time = 90
 
-var current_location = "ghostspawn"
+var current_location = "dadspawn"
 
 var ghost_success = false
 var ghost_encountered = false

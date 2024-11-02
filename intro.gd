@@ -5,6 +5,7 @@ signal startgame
 
 var day = 0
 
+
 func _ready():
 	get_parent().get_parent().connect("dialogue_finished", self, "next")
 
