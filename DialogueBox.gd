@@ -65,7 +65,6 @@ func loadDialogue(filePath):
 
 func selectDialogue(dialogueSelection):
 	clearVars()
-
 	dialogueSelectDict = dialogueDict[dialogueSelection]
 	dialogue = dialogueSelectDict["text"]
 	type_dialogue = dialogueSelectDict["type"]

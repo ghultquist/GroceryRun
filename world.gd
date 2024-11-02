@@ -5,6 +5,8 @@ const dialogueBoxScene = preload("res://dialogue.tscn")
 const introScene = preload("res://intro.tscn")
 const dadCallScene = preload("res://dad_call.tscn")
 const retuneScene = "res://retune.tscn"
+const jumpinglizardScene = "res://jumpinglizard.tscn"
+const forestScene = "res://Ghost_Game.tscn"
 signal dialogue
 signal dialogue_finished
 var d
@@ -64,9 +66,15 @@ func playgame(g):
 		yield(d.get_child(0), "finished")
 	if g == "retune":
 		retune_minigame()
+	if g == "ghostgame":
+		print("spooooky")
+		get_tree().change_scene(forestScene)
 	if g == "dadcall":
 		print("answering call...")
 		dad_answered()
+	if g == "teethgame":
+		print("rocking out...")
+		get_tree().change_scene(jumpinglizardScene)
 
 func nextdialogue(dname):
 	if d.get_child(0):
@@ -107,8 +115,10 @@ func _on_Dad_Area_body_entered(body):
 		dialogue("dad_000")
 
 func dad_answered():
-	var y = $Call_Answered.global_position
 	$Player.global_position = $Call_Answered.global_position
+	if $Player.facing_right == true:
+		$Player.facing_right = false
+		$Player/Sprite.flip_h = true
 	$Player.facing_right = false
 	$Player/AnimationPlayer.play("Idle")
 	$Player.can_move = false

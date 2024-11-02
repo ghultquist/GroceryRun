@@ -216,7 +216,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -288, 61 ), Vector2( -288, 58 ) ]
+"values": [ Vector2( -121, 78 ), Vector2( -121, 70 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=12]
@@ -301,15 +301,13 @@ anims/RESET = SubResource( 1 )
 anims/singerrock = SubResource( 7 )
 anims/walk = SubResource( 2 )
 
-[node name="dimmer" type="Sprite" parent="."]
-texture = ExtResource( 2 )
-
 [node name="bg-cyclop" type="Sprite" parent="."]
-position = Vector2( -309, 72 )
+position = Vector2( -145, 97 )
 texture = ExtResource( 9 )
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="bg-cyclop"]
+autoplay = "cyclop"
 anims/RESET = SubResource( 8 )
 anims/cyclop = SubResource( 9 )
 
@@ -318,10 +316,12 @@ position = Vector2( -288, 61 )
 texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="bg-ghost"]
+autoplay = "ghost"
 anims/RESET = SubResource( 10 )
 anims/ghost = SubResource( 11 )
 
 [node name="left" type="Area2D" parent="."]
+visible = false
 position = Vector2( -256, 56.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left"]
@@ -329,6 +329,7 @@ position = Vector2( 16, 18.875 )
 shape = SubResource( 12 )
 
 [node name="right" type="Area2D" parent="."]
+visible = false
 position = Vector2( -256, 56.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right"]
@@ -336,6 +337,7 @@ position = Vector2( 496, 19.5 )
 shape = SubResource( 12 )
 
 [node name="showtime" type="Area2D" parent="."]
+visible = false
 position = Vector2( -256, 56.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="showtime"]
@@ -343,20 +345,19 @@ position = Vector2( 264, 18.5 )
 shape = SubResource( 12 )
 
 [node name="Player" parent="." instance=ExtResource( 13 )]
-position = Vector2( -24, 68 )
+position = Vector2( 50, 66 )
 
 [node name="Camera2D" parent="Player" index="2"]
 zoom = Vector2( 0.8, 0.8 )
 
 [node name="TopLeft" parent="Player/Camera2D/Limits" index="0"]
-position = Vector2( 0, 0 )
+position = Vector2( 13, 40 )
 
 [node name="BottomRight" parent="Player/Camera2D/Limits" index="1"]
-position = Vector2( 640, 418 )
+position = Vector2( 634, 362 )
 
 [node name="Monster" type="Sprite" parent="."]
-visible = false
-position = Vector2( 74, 52 )
+position = Vector2( 247, 52 )
 texture = ExtResource( 16 )
 hframes = 13
 vframes = 2
@@ -365,6 +366,9 @@ vframes = 2
 playback_speed = 0.75
 anims/RESET = SubResource( 13 )
 anims/unravel = SubResource( 14 )
+
+[node name="dimmer" type="Sprite" parent="."]
+texture = ExtResource( 2 )
 
 [node name="supports" type="Sprite" parent="."]
 texture = ExtResource( 3 )

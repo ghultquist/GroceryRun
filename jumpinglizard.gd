@@ -8,12 +8,13 @@ var right = false
 var next 
 
 func _ready():
-	get_parent().connect("dialogue_finished", self, "dialogue_finished")
-	$"bg-cyclop/AnimationPlayer".play("cyclop")
-	$"bg-ghost/AnimationPlayer".play("ghost")
-	$Monster.hide()
-	$"Player/Camera2D".zoom.x = .8
-	$"Player/Camera2D".zoom.y = .8
+	pass
+	#get_parent().connect("dialogue_finished", self, "dialogue_finished")
+	#$"bg-cyclop/AnimationPlayer".play("cyclop")
+	#$"bg-ghost/AnimationPlayer".play("ghost")
+	#$Monster.hide()
+	#$"Player/Camera2D".zoom.x = .8
+	#$"Player/Camera2D".zoom.y = .8
 
 #func _on_left_body_entered(body):
 #	emit_signal("dialogue", "101")
@@ -32,6 +33,10 @@ func _ready():
 #		emit_signal("dialogue", "100")
 #	if right == true and left == true:
 #		showtime()
+
+
+#HIDE N SEEK?? Red lights & monster??
+#"All I need to do is hype up my bro for one song... I used to do it all the time! What's different now? Tonight's been weird... and I don't know anyone here except Teeth who's on stage...
 
 func showtime():
 #	emit_signal("dialogue", "105")

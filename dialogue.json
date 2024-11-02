@@ -198,7 +198,7 @@
         "speaker_id": "ghost", 
         "text": ["Make sure you do the knocking, he can get a little mean when he’s nervous. Thank you again!!! <3"],
         "choices": {},
-        "commands": {"type": "next", "specific":"ghost_400"}
+        "commands": {"type": "game", "specific" : "ghostgame"}
     },
     "ghost_400" : {
         "type": "dialogue", 
@@ -387,7 +387,7 @@
         "speaker_id": "teeth", 
         "text": ["Hell yeah! That’s what I like to hear. Let’s rock!"],
         "choices": {},
-        "commands": {}
+        "commands": {"type": "game", "specific" : "teethgame"}
     },
     "teeth_302" : {
         "type": "dialogue", 
