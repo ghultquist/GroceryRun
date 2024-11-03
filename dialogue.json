@@ -196,7 +196,7 @@
     "ghost_303" : {
         "type": "dialogue", 
         "speaker_id": "ghost", 
-        "text": ["Make sure you do the knocking, he can get a little mean when he’s nervous. Thank you again!!! <3"],
+        "text": ["I wrote down the symbols in the order you should knock, but I couldn't remember which trees were where, so make sure you look at the symbols on the trees!", "Make sure you do the knocking, he can get a little mean when he’s nervous. Thank you again!!! <3"],
         "choices": {},
         "commands": {"type": "game", "specific" : "ghostgame"}
     },
