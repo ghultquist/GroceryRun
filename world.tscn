@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://street_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Stats.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Assets/ghost_sprite.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Sprite-JL-purpleghostaseprite.png" type="Texture" id=16]
+[ext_resource path="res://Assets/ghost_game/laszlo.png" type="Texture" id=17]
 
 [sub_resource type="Animation" id=5]
 length = 10.0
@@ -164,7 +165,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -387,7 +388,6 @@ vframes = 2
 [node name="Stats" parent="." instance=ExtResource( 14 )]
 
 [node name="Ghost" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 299, 8 )
 texture = ExtResource( 15 )
 hframes = 2
@@ -405,6 +405,10 @@ autoplay = "float"
 anims/RESET = SubResource( 10 )
 anims/fade = SubResource( 21 )
 anims/float = SubResource( 11 )
+
+[node name="Laszlo" type="Sprite" parent="."]
+position = Vector2( 328, -19 )
+texture = ExtResource( 17 )
 
 [node name="Dad" type="Sprite" parent="."]
 position = Vector2( 1466, 4 )

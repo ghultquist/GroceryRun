@@ -91,7 +91,7 @@
     "intro_005" : {
         "type": "internal", 
         "speaker_id": "X", 
-        "text": ["The darkest of hours is upon us. We must stay strong and…", "and…", "Okay, X, let’s drop the old-settler / post-apocalyptic-survivor monologue and just go to the goddamn grocery store."],
+        "text": ["The darkest of hours is upon us. We must stay strong and…", "and…", "Okay, X, let’s drop the post-apocalyptic-survivor monologue and just go to the goddamn grocery store."],
         "choices": {},
         "commands": {}
     },
@@ -214,14 +214,14 @@
         "speaker_id": "ghost", 
         "text": ["Stop by again to chat sometime! <3"],
         "choices": {},
-        "commands": {}
+        "commands": {"type": "next", "specific" : "ghost_402"}
     },
-    "ghost_500" : {
-        "type": "dialogue", 
+    "ghost_402" : {
+        "type": "internal", 
         "speaker_id": "X", 
-        "text": ["I know you’re in a hurry, so we can talk again later!"],
+        "text": ["That took a little longer than I'd like, but I'm glad I could help. Now, what was I doing..."],
         "choices": {},
-        "commands": {}
+        "commands": {"type": "game", "specific" : "retune"}
     },
 
 

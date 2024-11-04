@@ -37,6 +37,7 @@ func _ready():
 
 #HIDE N SEEK?? Red lights & monster??
 #"All I need to do is hype up my bro for one song... I used to do it all the time! What's different now? Tonight's been weird... and I don't know anyone here except Teeth who's on stage...
+#2 sets of lights Lincoln suggestion
 
 func showtime():
 #	emit_signal("dialogue", "105")

@@ -434,8 +434,3 @@ texture = ExtResource( 21 )
 [node name="Ani0" type="Sprite" parent="phone/OpeningAni"]
 position = Vector2( 320, 178.999 )
 texture = ExtResource( 20 )
-
-[connection signal="pressed" from="phone/StartBtn" to="phone" method="_on_StartBtn_pressed"]
-[connection signal="pressed" from="phone/EndingsBtn" to="phone" method="_on_EndingsBtn_pressed"]
-[connection signal="pressed" from="phone/CreditsBtn" to="phone" method="_on_CreditsBtn_pressed"]
-[connection signal="pressed" from="phone/back" to="phone" method="_on_back_pressed"]

@@ -18,7 +18,13 @@ var dadcall_entered = false
 var teeth_entered = false
 var circus_entered = false
 
+var ghost_active = true
+var dadcall_active = true
+var teeth_active = true
+var circus_active = true
+
 var current_time = 90
+var gameover = false
 
 func _ready():
 	var spawnposition
@@ -26,7 +32,6 @@ func _ready():
 		var i = introScene.instance()
 		self.add_child(i)
 		i.get_child(0).connect("dialogue_sent", self, "dialogue")
-		i.get_child(0).start_intro()
 		spawnposition = $Start.global_position
 	elif Stats.current_location == "ghostspawn":
 		spawnposition = $Ghost.global_position 
@@ -38,6 +43,9 @@ func _ready():
 		spawnposition = $Start.global_position
 	spawnposition.x -= 30
 	$Player.global_position = spawnposition
+	
+	$Laszlo.hide()
+	$Ghost.hide()
 
 
 func dialogue(dIndex):
@@ -94,13 +102,16 @@ func _on_Ghost_Area2D_body_entered(body):
 		yield($Ghost/AnimationPlayer, "animation_finished")
 		$Ghost/AnimationPlayer.play("float")
 		dialogue("ghost_100")
-	if Stats.ghost_encountered and Stats.ghost_success:
-		$Player/Camera2D/Press_Enter.show()
+	if Stats.ghost_success and ghost_active:
+		ghost_active = false
+		dialogue("ghost_400")
+		$Laszlo.show()
 
 
 func _on_Ghost_Area2D_body_exited(body):
 	ghost_entered = false
 	if not Stats.ghost_success and $Ghost.visible:
+		ghost_active = false
 		$Ghost/AnimationPlayer.play_backwards("fade")
 		yield($Ghost/AnimationPlayer, "animation_finished")
 		$Ghost.visible = false
@@ -153,17 +164,34 @@ func _on_Circus_Area_body_exited(body):
 	circus_entered = false
 	$Player/Camera2D/Press_Enter.hide()
 
+func reset():
+	ghost_entered = false
+	dadcall_entered = false
+	teeth_entered = false
+	circus_entered = false
+	current_time = 90
+	Stats.reset()
+	gameover = false
+	_ready()
+
 func _process(delta):
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("ui_accept"):
 		if ghost_entered and Stats.ghost_encountered and Stats.ghost_success:
-			dialogue("ghost_500")
+			Stats.current_location = "ghostspawn"
 		elif dadcall_entered:
 			Stats.current_location = "dadcallspawn"
 		elif teeth_entered:
 			Stats.current_location = "teethspawn"
 		elif circus_entered:
 			Stats.current_location = "circusspawn"
+		elif gameover:
+			reset()
 	if Stats.time != current_time:
 		current_time = Stats.time
 		print("Time: " + str(current_time))
+	if current_time < 0:
+		$Player.can_move = false
+		$Player/Game_Over/AnimationPlayer.play("gameover")
+		gameover = true
+	
 

@@ -8,6 +8,7 @@ var day = 0
 
 func _ready():
 	get_parent().get_parent().connect("dialogue_finished", self, "next")
+	$phone.intro()
 
 func start_intro():
 	$Days.text = ""
