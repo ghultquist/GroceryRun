@@ -136,16 +136,6 @@ margin_right = 602.0
 margin_bottom = 360.0
 texture_normal = ExtResource( 4 )
 
-[node name="Give_Up" type="RichTextLabel" parent="."]
-margin_left = 419.0
-margin_top = 340.0
-margin_right = 636.0
-margin_bottom = 353.0
-theme = SubResource( 2 )
-bbcode_enabled = true
-bbcode_text = "[b]Press Q to end your search [/b]"
-text = "Press Q to end your search "
-
 [node name="Instructions" type="RichTextLabel" parent="."]
 margin_left = 86.0
 margin_top = 47.0
@@ -160,7 +150,7 @@ text = "Knock on the trees in the in one of the 3 sequences on your hand"
 margin_left = 86.0
 margin_top = 67.0
 margin_right = 608.0
-margin_bottom = 80.0
+margin_bottom = 122.0
 theme = SubResource( 2 )
 bbcode_enabled = true
 
@@ -173,6 +163,8 @@ texture = ExtResource( 8 )
 anims/RESET = SubResource( 3 )
 anims/fade = SubResource( 4 )
 anims/fadein = SubResource( 5 )
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="tree1" to="." method="_on_tree1_pressed"]
 [connection signal="pressed" from="tree2" to="." method="_on_tree2_pressed"]

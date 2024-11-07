@@ -28,6 +28,7 @@ var current_time = 90
 var gameover = false
 
 func _ready():
+	Hud.get_child(0).time_visible(true)
 	var spawnposition
 	if Stats.current_location == "firstspawn":
 		var i = introScene.instance()
@@ -45,6 +46,7 @@ func _ready():
 	spawnposition.x -= 30
 	$Player.global_position = spawnposition
 	
+	Hud.get_child(0).hide_guide()
 	$Laszlo.hide()
 	$Ghost.hide()
 
@@ -53,6 +55,7 @@ func dialogue(dIndex):
 	print("received")
 	$Player.can_move = false
 	$Player/AnimationPlayer.play("Idle")
+	Hud.get_child(0).guide_text("[right]Press enter to continue/select[/right]")
 	d = dialogueBoxScene.instance()
 	self.add_child(d)
 	d.get_child(0).connect("ending", self, "ending")
@@ -60,12 +63,19 @@ func dialogue(dIndex):
 	d.get_child(0).connect("next", self, "nextdialogue")
 	d.get_child(0).connect("finished", self, "dialogueEnd")
 	d.get_child(0).connect("game", self, "playgame")
+	d.get_child(0).connect("timelost", self, "timeloss")
 	d.get_child(0).selectDialogue(dIndex)
+
+func timeloss(t):
+	if d.get_child(0):
+		yield(d.get_child(0), "finished")
+	Stats.time -= t
 
 func goto(scene):
 	get_tree().change_scene(scene)
 
 func dialogueEnd():
+	Hud.get_child(0).hide_guide()
 	$Player.can_move = true
 	emit_signal("dialogue_finished")
 
@@ -119,7 +129,6 @@ func _on_Ghost_Area2D_body_exited(body):
 		$Ghost/AnimationPlayer.play_backwards("fade")
 		yield($Ghost/AnimationPlayer, "animation_finished")
 		$Ghost.visible = false
-	$Player/Camera2D/Press_Enter.hide()
 
 
 
@@ -146,12 +155,13 @@ func _on_Dad_Area_body_exited(body):
 	dadcall_entered = false
 
 
-
 func _on_Teeth_Area_body_entered(body):
 	teeth_entered = true
 	if not Stats.teeth_encountered:
 		Stats.teeth_encountered = true
 		dialogue("teeth_100")
+	if Stats.teeth_encountered and not Stats.teeth_success:
+		$Teeth.hide()
 
 func _on_Teeth_Area_body_exited(body):
 	teeth_entered = false
@@ -169,7 +179,7 @@ func _on_Circus_Area_body_entered(body):
 
 func _on_Circus_Area_body_exited(body):
 	circus_entered = false
-	$Player/Camera2D/Press_Enter.hide()
+
 
 
 
@@ -206,9 +216,6 @@ func _process(delta):
 			Stats.current_location = "circusspawn"
 		elif gameover:
 			reset()
-	if Stats.time != current_time:
-		current_time = Stats.time
-		print("Time: " + str(current_time))
 	if current_time < 0:
 		$Player.can_move = false
 		$Player/Game_Over/AnimationPlayer.play("gameover")

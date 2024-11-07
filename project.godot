@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 
 PlayerStats="*res://PlayerStats.tscn"
 Stats="*res://Stats.gd"
+Hud="*res://HUD.tscn"
 
 [display]
 

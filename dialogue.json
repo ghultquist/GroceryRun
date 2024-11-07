@@ -91,7 +91,7 @@
     "intro_005" : {
         "type": "internal", 
         "speaker_id": "X", 
-        "text": ["The darkest of hours is upon us. We must stay strong and…", "and…", "Okay, X, let’s drop the post-apocalyptic-survivor monologue and just go to the goddamn grocery store."],
+        "text": ["The darkest of hours is upon us. We must stay strong and…", "and…", "Okay, X, let’s drop the post-apocalyptic-survivor monologue and just go to the damn grocery store."],
         "choices": {},
         "commands": {}
     },
@@ -99,7 +99,7 @@
     "intro_100" : {
         "type": "dialogue", 
         "speaker_id": "X", 
-        "text": ["Food, I can usually scrounge around for 10 or 20 minutes and figure out something to eat, but toilet paper is a different story…", "The store closes in 2 hours, so that gives me, like, 90 minutes to get there before it’s too late to go in without being a TOTAL asshole.", "You just need to stay focused, X. You’ve already been putting this off for weeks.", "You just need to do it."],
+        "text": ["Food, I can usually scrounge around for 10 or 20 minutes and figure out something to eat, but toilet paper is a different story…", "The store closes in 2 hours, so that gives me, like, 90 minutes to get there before it’s too late to go in without being a TOTAL jerk.", "You just need to stay focused, X. You’ve already been putting this off for weeks.", "You just need to do it."],
         "choices": {},
         "commands": {}
     },
@@ -146,7 +146,7 @@
         "speaker_id": "ghost", 
         "text": ["Oh... okay..."],
         "choices": {},
-        "commands": {}
+        "commands": {"type": "timelost", "specific":3}
     },
     "ghost_203" : {
         "type": "dialogue", 
@@ -168,9 +168,9 @@
     "ghost_205" : {
         "type": "internal", 
         "speaker_id": "X", 
-        "text": ["Hopefully she’ll be gone by then…"],
+        "text": ["Hopefully she’ll be gone by then… I do feel bad for her though... if it wasn't some kind of trap...","What was I doing again?"],
         "choices": {},
-        "commands": {}
+        "commands": {"type": "game", "specific" : "retune"}
     },
     "ghost_300" : {
         "type": "dialogue", 
@@ -223,6 +223,7 @@
         "choices": {},
         "commands": {"type": "game", "specific" : "retune"}
     },
+    
 
 
 
@@ -239,7 +240,7 @@
     "dad_100" : {
         "type": "internal", 
         "speaker_id": "X", 
-        "text": ["Oh shit, it’s dad. I haven’t talked to him in a while… I haven’t had any real, like, life updates.", "At least none I want to talk about…"],
+        "text": ["It’s dad. I haven’t talked to him in a while… I haven’t had any real, like, life updates.", "At least none I want to talk about…"],
         "choices": {
             "choice1" : {"text": "Ignore. Just call him back later or like next week or something.", "next" : "dad_101"},
             "choice2" : {"text" : "Pick up. I’ve put this off long enough.", "next": "dad_200"}},
@@ -285,7 +286,7 @@
         "speaker_id": "X", 
         "text": ["DAD, I HAVE BAD RECEPTION I’LL CALL YOU LATER (why do I think shouting will make the reception better…)"],
         "choices": {},
-        "commands": {}
+        "commands": {"type": "timelost", "specific":3}
     },
 
     "dad_204" : {
@@ -324,7 +325,7 @@
     "teeth_100" : {
         "type": "internal", 
         "speaker_id": "X", 
-        "text": ["Oh shit, is that Teeth? She texted me a week ago about…", "Oh that’s right! Her show is tonight. I lied and said I was busy. She looks nervous, maybe I shouldn’t bother her…"],
+        "text": ["Oh no, is that Teeth? She texted me a week ago about…", "Oh that’s right! Her show is tonight. I lied and said I was busy. She looks nervous, maybe I shouldn’t bother her…"],
         "choices": {
             "choice1" : {"text": "Talk to her.", "next" : "teeth_101"},
             "choice2" : {"text" : "Sneak past her", "next": "teeth_102"}
@@ -370,7 +371,14 @@
         "speaker_id": "teeth", 
         "text": ["Oh, yeah. That’s alright. I’ll just hit you up the next time we’re playing."],
         "choices": {},
-        "commands": {}
+        "commands": {"type": "next", "specific":"teeth_203"}
+    },
+    "teeth_203" : {
+        "type": "internal", 
+        "speaker_id": "X", 
+        "text": ["I feel bad for lying to her, but I just haven't had time to hang out lately...", "Or I guess the energy... But she's important to me. I shouldn't take her for granted.", "I can't even remember what I was so busy with that I couldn't stop..."],
+        "choices": {},
+        "commands": {"type": "game", "specific":"retune"}
     },
     "teeth_300" : {
         "type": "dialogue", 
@@ -394,7 +402,7 @@
         "speaker_id": "teeth", 
         "text": ["No problem. I’ll hit you up next time!"],
         "choices": {},
-        "commands": {}
+        "commands": {"type": "timelost", "specific":3}
     },
 
     "circus_000" : {

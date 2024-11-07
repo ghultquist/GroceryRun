@@ -117,6 +117,3 @@ texture = ExtResource( 6 )
 [node name="x_portrait" type="Sprite" parent="DialogueBox"]
 position = Vector2( 95, -65 )
 texture = ExtResource( 7 )
-
-[connection signal="pressed" from="DialogueBox/choice1" to="DialogueBox" method="_on_choice1_pressed"]
-[connection signal="pressed" from="DialogueBox/choice2" to="DialogueBox" method="_on_choice2_pressed"]

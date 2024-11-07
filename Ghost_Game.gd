@@ -5,12 +5,15 @@ var pattern = []
 var guess = []
 
 var level = 1
+var timelost = 10
 
 const worldScene = "res://world.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Stats.time -= 10
+	Hud.get_child(0).time_visible(false)
+	Hud.get_child(0).guide_text("[right]Press Q to Leave Early[/right]")
+	$Timer.wait_time = 3
 	forest3()
 
 func forest1():
@@ -33,7 +36,7 @@ func forest3():
 	$tree1.set_global_position(Vector2(57,0))
 	$tree2.set_global_position(Vector2(310,0))
 	$tree3.set_global_position(Vector2(468,0))
-	$tree3.set_global_position(Vector2(468,0))
+
 
 func _on_tree1_pressed():
 	guess.append(1)
@@ -47,12 +50,11 @@ func _on_tree3_pressed():
 	guess.append(3)
 	$knocking.bbcode_text = str(guess)
 
-func end_game():
-	get_tree().change_scene(worldScene)
-
 func _process(delta):
-	if Input.is_action_just_pressed("jump"):
-		end_game()
+	if Input.is_action_just_pressed("quit"):
+		Hud.get_child(0).hide_guide()
+		Stats.time -= timelost
+		get_tree().change_scene(worldScene)
 	if len(guess) >= len(pattern):
 		if guess == pattern:
 			guess = []
@@ -69,9 +71,19 @@ func _process(delta):
 				$knocking.bbcode_text = "!!!"
 				guess = []
 				Stats.ghost_success = true
-				end_game()
+				Hud.get_child(0).hide_guide()
+				Stats.time -= timelost
+				get_tree().change_scene(worldScene)
 			$knocking.bbcode_text = ""
 			$fade/AnimationPlayer.play_backwards("fade")
 		else:
-			$knocking.bbcode_text = "Not quite..."
 			guess = []
+			$knocking.bbcode_text = "Was that a growl? Laszlo didn't like that I got the pattern wrong... I'm going to give him a bit of space and restart..."
+			$Timer.start()
+			yield($Timer, "timeout")
+			$fade/AnimationPlayer.play("fade")
+			yield($fade/AnimationPlayer, "animation_finished")
+			level = 1
+			forest3()
+			$knocking.bbcode_text = ""
+			$fade/AnimationPlayer.play_backwards("fade")

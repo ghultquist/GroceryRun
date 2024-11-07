@@ -7,7 +7,10 @@ var question
 var success = false
 
 func _ready():
+	Hud.get_child(0).time_visible(false)
 	get_parent().get_parent().connect("dialogue_finished", self, "next")
+	Hud.get_child(0).guide_text = "[right]Click on the timebar and release on the right response[/right]"
+	Hud.get_child(0).show_guide = true
 	Stats.time -= 5
 	q1()
 
@@ -70,4 +73,6 @@ func _on_QTdevourerBar_timed_click(success):
 		queue_free()
 			
 func next():
+	Hud.get_child(0).time_visible(false)
+	Hud.get_child(0).hide_guide()
 	emit_signal("retune")

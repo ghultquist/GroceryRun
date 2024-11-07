@@ -1,11 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://playercam.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-size = 8
-font_data = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D"]
 position = Vector2( 0, -60 )
@@ -20,12 +15,3 @@ position = Vector2( -321, -240 )
 
 [node name="BottomRight" type="Position2D" parent="Limits"]
 position = Vector2( 321, 120 )
-
-[node name="Press_Enter" type="Label" parent="."]
-visible = false
-margin_left = 94.0
-margin_top = 103.0
-margin_right = 278.0
-margin_bottom = 111.0
-custom_fonts/font = SubResource( 1 )
-text = "Press Space to Interact"

@@ -5,6 +5,7 @@ signal ending
 signal goto
 signal next
 signal game
+signal timelost
 
 onready var stats = get_tree().get_root().find_node("Stats", true, false)
 onready var main = get_tree().get_root().find_node("Main", true, false)
@@ -53,6 +54,8 @@ func _process(delta):
 			print("choice 2 selected")
 		if choice != 0:
 			if Input.is_action_just_pressed("ui_accept"):
+				$choice1.set_normal_texture(null)
+				$choice2.set_normal_texture(null)
 				selectingChoice(choice)
 		
 
@@ -125,6 +128,9 @@ func setDialogue():
 			$x_portrait.hide()
 			$portrait.texture = load(portrait)
 			$portrait.show()
+		else:
+			$portrait.hide()
+			$x_portrait.hide()
 		
 	if phraseIndex < dialogue.size():
 		phrasefinished = false

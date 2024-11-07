@@ -1,34 +1,27 @@
 extends Node2D
 
-signal dialogue(index)
-signal goto
+const worldScene = "res://world.tscn"
 
-var left = false
-var right = false
-var next 
-var d
 var light = 6
-var oldlight = 6
-var active_light = 6
-
 var points = 0
 var lives = 3
-var animations
-var lit = []
 var red_lights = []
 var can_damage = true
+var gameover = false
+var animations = ["pattern1", "pattern2", "pattern3", "RESET"]
+var placements = [Vector2(87, 83), Vector2(-160, 83), Vector2(160, 83), Vector2(0, 83)]
+
+var timelost = 10
 
 func _ready():
+	Hud.get_child(0).time_visible(false)
 	red_lights = [$r1, $r2, $r3, $r4, $r5, $r6]
-	$good/good_CS.set_deferred("disabled", false)
 	$Timer.wait_time = 2
+	$good/Sprite.hide()
+	$Monster.hide()
+	Hud.get_child(0).guide_text("[right]Press Q to Leave Early[/right]")
+	$Player.global_position = self.global_position + Vector2(-153, 64)
 	start_show()
-	#get_parent().connect("dialogue_finished", self, "dialogue_finished")
-	#$"bg-cyclop/AnimationPlayer".play("cyclop")
-	#$"bg-ghost/AnimationPlayer".play("ghost")
-	#$Monster.hide()
-	#$"Player/Camera2D".zoom.x = .8
-	#$"Player/Camera2D".zoom.y = .8
 
 
 func start_show():
@@ -80,36 +73,32 @@ func showtime():
 	yield($instruct/AnimationPlayer, "animation_finished")
 	$"band-drummer/AnimationPlayer".play("drumrock")
 	$"band-guitar/AnimationPlayer".play("guitarrock")
-	$Player.can_move =true
+	$Player.can_move = true
+	Hud.get_child(0).guide_text("[right]Press Q to Leave Early[/right]")
 	game_level()
 	
 
 func game_level():
-	if points == 0:
-		$light_animation.play("pattern1")
+	$light_animation.play("RESET")
+	print(points)
+	$good/good_CS.set_deferred("disabled", true)
+	$good.global_position = self.global_position + placements[points]
+	$good/good_CS.set_deferred("disabled", false)
+	$good/Sprite.show()
+	$light_animation.play(animations[points])
 
-func showstart():
-	$"band-drummer/AnimationPlayer".play("drumrock")
-	$"band-guitar/AnimationPlayer".play("guitarrock")
-	$"lights-y".hide()
-	$"lights-r".show()
-	yield(get_tree().create_timer(3), "timeout")
-	$GO.show()
-	yield(get_tree().create_timer(2), "timeout")	
-	$GO.hide()
-	$Monster.show()
-	yield(get_tree().create_timer(2), "timeout")
-	$HOME.show()
-	yield(get_tree().create_timer(2), "timeout")
-	$HOME.hide()
-	$Monster/AnimationPlayer.play("unravel")
-	yield($Monster/AnimationPlayer, "animation_finished")
-	yield(get_tree().create_timer(1), "timeout")		
-	emit_signal("goto", "world")
-
-
-
-
+func reset_level():
+	Hud.get_child(0).guide_text("[right]Press Q to Leave Early[/right]")
+	light = 6
+	points = 0
+	lives = 3
+	red_lights = []
+	can_damage = true
+	gameover = false
+	$Player/AnimationPlayer.play("Idle")
+	$Player.global_position = self.global_position + Vector2(-153, 64)
+	game_level()
+	
 
 
 func _on_r1_body_entered(body):
@@ -160,12 +149,29 @@ func _on_r6_body_exited(body):
 	light = 6
 
 func _on_good_body_entered(body):
-	print("yum!")
-	$good/good_CS.set_deferred("disabled", true)
+	points += 1
 	$good/Sprite.hide()
-
+	if points >= 3:
+		$instruct.bbcode_text = "[center]NICE MOVES![/center]"
+		$instruct/AnimationPlayer.play("fade")
+		yield($instruct/AnimationPlayer, "animation_finished")
+		Stats.teeth_success = true
+		Hud.get_child(0).hide_guide()
+		Stats.time -= timelost
+		get_tree().change_scene(worldScene)
+	else:
+		$instruct.bbcode_text = "[center]Changing up the tempo![/center]"
+		$instruct/AnimationPlayer.play("fade")
+		yield($instruct/AnimationPlayer, "animation_finished")
+		game_level()
 
 func _process(delta):
+	if Input.is_action_just_pressed("ui_accept") and gameover:
+		reset_level()
+	if Input.is_action_just_pressed("quit"):
+		Stats.time -= timelost
+		get_tree().change_scene(worldScene)
+		
 	if light < red_lights.size() and can_damage:
 		if red_lights[light].get_child(0).visible:
 			$light_animation.stop()
@@ -177,20 +183,28 @@ func _process(delta):
 			$Monster.global_position = Vector2(light_x, light_y)
 			lives -= 1
 			print("ouch!")
+			timelost += 1
+			$Player.can_move = false
 			if lives <= 0:
-				$Player.can_move = false
+				Hud.get_child(0).hide_guide()
 				$Monster/AnimationPlayer.play("unravel")
 				yield($Monster/AnimationPlayer, "animation_finished")
+				$instruct.bbcode_text = "[center]I can't be here right now... I need to step outside for a minute...\n[Press ENTER to take a breath and go back in or Q to call to leave][/center]"
+				$AnimationEnd.play("fadeout")
+				gameover = true
 			else:
 				$Timer.start()
 				yield($Timer, "timeout")
 				$light_animation.play("RESET")
-				$light_animation.play("pattern1")
 				$Monster.hide()
 				$"red-hue".hide()
 				$Player.can_move = true
+				$Timer.start()
+				yield($Timer, "timeout")
+				game_level()
 	if light == 6:
 		can_damage = true
+		
 		
 		
 
