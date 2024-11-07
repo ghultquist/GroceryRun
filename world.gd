@@ -7,6 +7,7 @@ const dadCallScene = preload("res://dad_call.tscn")
 const retuneScene = "res://retune.tscn"
 const jumpinglizardScene = "res://jumpinglizard.tscn"
 const forestScene = "res://Ghost_Game.tscn"
+const circusScene = "res://circus.tscn"
 signal dialogue
 signal dialogue_finished
 var d
@@ -40,7 +41,7 @@ func _ready():
 	elif Stats.current_location == "teethspawn":
 		spawnposition = $Teeth.global_position
 	elif Stats.current_location == "circusspawn":
-		spawnposition = $Start.global_position
+		spawnposition = $Circus.global_position
 	spawnposition.x -= 30
 	$Player.global_position = spawnposition
 	
@@ -83,6 +84,9 @@ func playgame(g):
 	if g == "teethgame":
 		print("rocking out...")
 		get_tree().change_scene(jumpinglizardScene)
+	if g == "circusgame":
+		print("pokadot pokadot...")
+		get_tree().change_scene(circusScene)
 
 func nextdialogue(dname):
 	if d.get_child(0):
@@ -148,21 +152,37 @@ func _on_Teeth_Area_body_entered(body):
 	if not Stats.teeth_encountered:
 		Stats.teeth_encountered = true
 		dialogue("teeth_100")
-	
-
 
 func _on_Teeth_Area_body_exited(body):
 	teeth_entered = false
+	if Stats.teeth_encountered and not Stats.teeth_success:
+		$Teeth/AnimationPlayer.play("fade")
+
 
 
 func _on_Circus_Area_body_entered(body):
 	circus_entered = true
-	$Player/Camera2D/Press_Enter.show()
+	if not Stats.circus_encountered:
+		Stats.circus_encountered = true
+		dialogue("circus_000")
 
 
 func _on_Circus_Area_body_exited(body):
 	circus_entered = false
 	$Player/Camera2D/Press_Enter.hide()
+
+
+
+
+
+func _on_demo_end_body_entered(body):
+	$Player.can_move = false
+	$Player/Game_Over/gameover.bbcode_text = "[center]TO BE CONTINUED (very soon...)[/center]"
+	$Player/Game_Over/AnimationPlayer.play("gameover")
+	gameover = true
+
+
+
 
 func reset():
 	ghost_entered = false

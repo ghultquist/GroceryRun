@@ -397,6 +397,35 @@
         "commands": {}
     },
 
+    "circus_000" : {
+        "type": "dialogue", 
+        "speaker_id": "circus", 
+        "text": ["Hi"],
+        "choices": {},
+        "commands": {"type": "game", "specific" : "circusgame"}
+    },
+    "circus_100" : {
+        "type": "dialogue", 
+        "speaker_id": "circus", 
+        "text": [""],
+        "choices": {},
+        "commands": {}
+    },
+    "circus_101" : {
+        "type": "dialogue", 
+        "speaker_id": "circus", 
+        "text": [""],
+        "choices": {},
+        "commands": {}
+    },
+    "c_000" : {
+        "type": "dialogue", 
+        "speaker_id": "c", 
+        "text": ["COME ONE, COME ALL! COME BIG, COME SMALL!", "YOU HEAR MY CALL! I SEE YOU CRAWL!", "We’re joined here tonight by X, one of the world’s greatest rejects! Archaic face with a fractured image, look upon their pathetic visage!", "Did the unkind world starve you to bone, leave you alone, or is fault your own?", "It’s the tragic hand you have been dealt, with little wealth, and frail mental health.", "By now you must realize the reclusive effect. Loved ones abundant left to rot in neglect.", "Postponements that you’ve been known to prolong. By now you must realize you do not belong."],
+        "choices": {},
+        "commands": {}
+    },
+
 
 
 

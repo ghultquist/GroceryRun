@@ -2,7 +2,7 @@ extends Node
 
 var time = 90
 
-var current_location = "firstspawn"
+var current_location = "teethspawn"
 
 var ghost_success = false
 var ghost_encountered = false

@@ -8,7 +8,6 @@
 [ext_resource path="res://Assets/retuning/pear.png" type="Texture" id=6]
 [ext_resource path="res://Assets/retuning/littlecorn.png" type="Texture" id=7]
 [ext_resource path="res://Assets/PhoneSequence/phone_PauseBG.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Fonts/Press_Start_2P/Press_Start_2P.tres" type="DynamicFont" id=9]
 [ext_resource path="res://intro.gd" type="Script" id=10]
 [ext_resource path="res://phone.gd" type="Script" id=11]
 [ext_resource path="res://Assets/PhoneSequence/phone_full.png" type="Texture" id=12]
@@ -32,8 +31,11 @@
 [ext_resource path="res://Assets/dialogue_arrow.png" type="Texture" id=30]
 [ext_resource path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" type="DynamicFontData" id=31]
 
-[sub_resource type="Theme" id=1]
-default_font = ExtResource( 9 )
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 31 )
+
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 7 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -385,7 +387,7 @@ margin_left = 79.0
 margin_top = 35.0
 margin_right = 554.0
 margin_bottom = 75.0
-theme = SubResource( 1 )
+theme = SubResource( 8 )
 custom_colors/default_color = Color( 0.964706, 0.933333, 0.933333, 1 )
 bbcode_enabled = true
 
@@ -394,6 +396,7 @@ anims/RESET = SubResource( 2 )
 anims/fadeout = SubResource( 3 )
 
 [node name="phone" type="Control" parent="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 11 )
