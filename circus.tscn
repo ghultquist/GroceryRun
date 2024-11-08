@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Assets/circus_sprite.png" type="Texture" id=1]
 [ext_resource path="res://Assets/circus_bg.png" type="Texture" id=2]
@@ -8,7 +8,10 @@
 [ext_resource path="res://Assets/monster_arms.png" type="Texture" id=6]
 [ext_resource path="res://player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://street_tiles.tres" type="TileSet" id=8]
-[ext_resource path="res://Assets/DevourerSpriteSheet.png" type="Texture" id=9]
+[ext_resource path="res://Assets/tongue.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Assets/ghost_sprite.png" type="Texture" id=11]
+[ext_resource path="res://Assets/teeth_playing.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -36,6 +39,126 @@ tracks/1/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("tentacles:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("tentacles3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.431373, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("tentacles2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("tentacles4:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.431373, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("tentacles5:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("tentacles:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("tentacles2:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("tentacles3:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("tentacles4:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("tentacles5:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "showtime"
@@ -61,7 +184,144 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ false, false ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "tentacles"
+length = 3.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("dark:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("tentacles:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("tentacles3:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.431373, 1, 1, 0 ), Color( 0.431373, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("tentacles2:modulate")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("tentacles4:modulate")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.431373, 1, 1, 0 ), Color( 0.431373, 1, 1, 0 ), Color( 0.431373, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("tentacles5:modulate")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("tentacles:scale")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("tentacles2:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("tentacles3:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("tentacles4:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.25, 0.25 ), Vector2( 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("tentacles5:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.25, 0.25 ), Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -153,102 +413,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
-}
-
-[sub_resource type="Animation" id=8]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=9]
-resource_name = "writhe"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
-
-[sub_resource type="Animation" id=10]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=11]
-resource_name = "writhe"
-length = 0.5
-loop = true
-step = 0.25
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
-
-[sub_resource type="Animation" id=12]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=13]
-resource_name = "writhe"
-length = 0.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 1, 0 ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -541,6 +705,347 @@ tracks/0/keys = {
 "values": [ 10, 11, 12, 13, 14, 15 ]
 }
 
+[sub_resource type="Animation" id=29]
+resource_name = "hold"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 14, 15 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "writhe"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "writhe"
+length = 0.5
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "writhe"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
+[sub_resource type="Animation" id=30]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 407, 127 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "ungulate"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 407, 127 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 0.95 ), Vector2( 0.95, 0.95 ), Vector2( 0.95, 1.05 ), Vector2( 1.05, 0.95 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=33]
+size = 8
+font_data = ExtResource( 10 )
+
+[sub_resource type="Theme" id=34]
+default_font = SubResource( 33 )
+
+[sub_resource type="Animation" id=35]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../intro1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../intro2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../intro3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=37]
+resource_name = "line1"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../intro1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=38]
+resource_name = "line2"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../intro2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=39]
+resource_name = "line3"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../intro3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=40]
+resource_name = "line4"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "reading"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../intro1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 9.5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../intro2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2, 2.5, 9.5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../intro3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4, 4.5, 9.5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 6, 6.5, 9.5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="circus" type="Node2D"]
 script = ExtResource( 5 )
 
@@ -554,28 +1059,10 @@ tile_data = PoolIntArray( 1703935, 2, 0, 1769492, 2, 0, 1966079, 2, 0, 2097151, 
 position = Vector2( 320, 180 )
 texture = ExtResource( 2 )
 
-[node name="ringleader" type="Sprite" parent="."]
-position = Vector2( 407, 127 )
-texture = ExtResource( 1 )
-hframes = 3
-vframes = 2
-frame = 3
-
-[node name="dark" type="Sprite" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0.886275 )
-position = Vector2( 320, 180 )
-texture = ExtResource( 3 )
-
-[node name="light" type="Sprite" parent="."]
-visible = false
-position = Vector2( -422, -136 )
-scale = Vector2( 4.78824, 4.78824 )
-texture = ExtResource( 4 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
 anims/showtime = SubResource( 2 )
+anims/tentacles = SubResource( 32 )
 
 [node name="tentacles" type="Sprite" parent="."]
 position = Vector2( 559, 251 )
@@ -600,41 +1087,6 @@ autoplay = "writhe"
 anims/RESET = SubResource( 6 )
 anims/writhe = SubResource( 7 )
 
-[node name="tentacles3" type="Sprite" parent="."]
-modulate = Color( 0.431373, 1, 1, 1 )
-position = Vector2( 289, 255 )
-texture = ExtResource( 6 )
-hframes = 2
-vframes = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="tentacles3"]
-autoplay = "writhe"
-anims/RESET = SubResource( 8 )
-anims/writhe = SubResource( 9 )
-
-[node name="tentacles4" type="Sprite" parent="."]
-modulate = Color( 0.431373, 1, 1, 1 )
-position = Vector2( 472, 253 )
-texture = ExtResource( 6 )
-hframes = 2
-vframes = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="tentacles4"]
-autoplay = "writhe"
-anims/RESET = SubResource( 10 )
-anims/writhe = SubResource( 11 )
-
-[node name="tentacles5" type="Sprite" parent="."]
-position = Vector2( 375, 255 )
-texture = ExtResource( 6 )
-hframes = 2
-vframes = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="tentacles5"]
-autoplay = "writhe"
-anims/RESET = SubResource( 12 )
-anims/writhe = SubResource( 13 )
-
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 47, 261 )
 
@@ -645,6 +1097,7 @@ position = Vector2( 0, 0 )
 position = Vector2( 640, 360 )
 
 [node name="AnimationPlayer" parent="Player" index="3"]
+autoplay = "Idle"
 anims/Idle = SubResource( 14 )
 anims/Jump = SubResource( 15 )
 anims/RESET = SubResource( 16 )
@@ -686,7 +1139,8 @@ anims/RESET = SubResource( 25 )
 anims/gameover = SubResource( 26 )
 
 [node name="devour" type="Sprite" parent="."]
-position = Vector2( 293, 270 )
+modulate = Color( 0.654902, 1, 1, 1 )
+position = Vector2( 253, 254 )
 texture = ExtResource( 9 )
 offset = Vector2( -35, 0 )
 hframes = 4
@@ -696,6 +1150,141 @@ frame = 10
 [node name="AnimationPlayer" type="AnimationPlayer" parent="devour"]
 anims/RESET = SubResource( 27 )
 anims/attack = SubResource( 28 )
+anims/hold = SubResource( 29 )
+
+[node name="tentacles3" type="Sprite" parent="."]
+modulate = Color( 0.431373, 1, 1, 1 )
+position = Vector2( 289, 255 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 6 )
+hframes = 2
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="tentacles3"]
+autoplay = "writhe"
+anims/RESET = SubResource( 8 )
+anims/writhe = SubResource( 9 )
+
+[node name="tentacles4" type="Sprite" parent="."]
+modulate = Color( 0.431373, 1, 1, 1 )
+position = Vector2( 472, 253 )
+texture = ExtResource( 6 )
+hframes = 2
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="tentacles4"]
+autoplay = "writhe"
+anims/RESET = SubResource( 10 )
+anims/writhe = SubResource( 11 )
+
+[node name="tentacles5" type="Sprite" parent="."]
+position = Vector2( 375, 255 )
+texture = ExtResource( 6 )
+hframes = 2
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="tentacles5"]
+autoplay = "writhe"
+anims/RESET = SubResource( 12 )
+anims/writhe = SubResource( 13 )
+
+[node name="light" type="Sprite" parent="."]
+visible = false
+position = Vector2( -552, -117 )
+scale = Vector2( 4.78824, 4.78824 )
+texture = ExtResource( 4 )
+
+[node name="ringleader" type="Sprite" parent="."]
+position = Vector2( 407, 127 )
+texture = ExtResource( 1 )
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ringleader"]
+playback_speed = 0.5
+anims/RESET = SubResource( 30 )
+anims/ungulate = SubResource( 31 )
+
+[node name="dark" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.713726 )
+position = Vector2( 320, 180 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 3 )
+
+[node name="dark2" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.721569 )
+position = Vector2( 320, 180 )
+texture = ExtResource( 3 )
+
+[node name="dark3" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.705882 )
+position = Vector2( 320, 180 )
+texture = ExtResource( 3 )
+
+[node name="ghoulia" type="Sprite" parent="."]
+position = Vector2( 378, 173 )
+texture = ExtResource( 11 )
+hframes = 2
+vframes = 2
+
+[node name="dark4" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.701961 )
+position = Vector2( 162, 91 )
+scale = Vector2( 0.446875, 0.438889 )
+texture = ExtResource( 3 )
+
+[node name="teeth" type="Sprite" parent="."]
+position = Vector2( 425, 165 )
+texture = ExtResource( 12 )
+hframes = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="intro1" type="RichTextLabel" parent="."]
+margin_left = 24.0
+margin_top = 28.0
+margin_right = 310.0
+margin_bottom = 59.0
+theme = SubResource( 34 )
+bbcode_enabled = true
+
+[node name="intro2" type="RichTextLabel" parent="."]
+margin_left = 25.0
+margin_top = 63.0
+margin_right = 309.0
+margin_bottom = 94.0
+theme = SubResource( 34 )
+bbcode_enabled = true
+
+[node name="intro3" type="RichTextLabel" parent="."]
+margin_left = 25.0
+margin_top = 96.0
+margin_right = 309.0
+margin_bottom = 127.0
+theme = SubResource( 34 )
+bbcode_enabled = true
+
+[node name="intro4" type="RichTextLabel" parent="."]
+margin_left = 25.0
+margin_top = 137.0
+margin_right = 309.0
+margin_bottom = 168.0
+theme = SubResource( 34 )
+bbcode_enabled = true
+
+[node name="textanimate" type="AnimationPlayer" parent="."]
+root_node = NodePath("../intro4")
+anims/RESET = SubResource( 35 )
+anims/line1 = SubResource( 37 )
+anims/line2 = SubResource( 38 )
+anims/line3 = SubResource( 39 )
+anims/line4 = SubResource( 40 )
+anims/reading = SubResource( 36 )
 
 [editable path="Player"]
 [editable path="Player/Camera2D"]

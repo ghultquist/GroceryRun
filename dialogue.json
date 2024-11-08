@@ -212,7 +212,7 @@
     "ghost_401" : {
         "type": "dialogue", 
         "speaker_id": "ghost", 
-        "text": ["Stop by again to chat sometime! <3"],
+        "text": ["I'm Ghoulia by the way! Stop by again to chat sometime! <3"],
         "choices": {},
         "commands": {"type": "next", "specific" : "ghost_402"}
     },
