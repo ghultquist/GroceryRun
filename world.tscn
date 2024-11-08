@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://street_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
@@ -165,7 +165,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -316,8 +316,26 @@ radius = 62.9682
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 10, 17 )
 
+[sub_resource type="Animation" id=25]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 17.5, 29.5 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 27, 40 )
 
 [node name="world" type="Node2D"]
 position = Vector2( 417, 220 )
@@ -415,6 +433,7 @@ vframes = 2
 [node name="Stats" parent="." instance=ExtResource( 14 )]
 
 [node name="Ghost" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 299, 8 )
 texture = ExtResource( 15 )
 hframes = 2
@@ -506,12 +525,22 @@ position = Vector2( -223, -368 )
 [node name="BottomRight" parent="Player/Camera2D/Limits" index="1"]
 position = Vector2( 5536, 340 )
 
+[node name="AnimationPlayer" parent="Player" index="3"]
+anims/fade = SubResource( 25 )
+
 [node name="Start" type="Area2D" parent="."]
 position = Vector2( -451, 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Start"]
 position = Vector2( 1, 6 )
 shape = SubResource( 14 )
+
+[node name="grocery" type="Area2D" parent="."]
+position = Vector2( 4896, 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grocery"]
+position = Vector2( -6, -2 )
+shape = SubResource( 24 )
 
 [connection signal="body_entered" from="Ghost/Ghost_Area2D" to="." method="_on_Ghost_Area2D_body_entered"]
 [connection signal="body_exited" from="Ghost/Ghost_Area2D" to="." method="_on_Ghost_Area2D_body_exited"]
@@ -522,6 +551,7 @@ shape = SubResource( 14 )
 [connection signal="body_entered" from="Circus/Circus_Area" to="." method="_on_Circus_Area_body_entered"]
 [connection signal="body_exited" from="Circus/Circus_Area" to="." method="_on_Circus_Area_body_exited"]
 [connection signal="body_entered" from="demo_end" to="." method="_on_demo_end_body_entered"]
+[connection signal="body_entered" from="grocery" to="." method="_on_grocery_body_entered"]
 
 [editable path="Player"]
 [editable path="Player/Camera2D"]

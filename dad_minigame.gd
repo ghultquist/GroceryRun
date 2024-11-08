@@ -9,8 +9,7 @@ var success = false
 func _ready():
 	Hud.get_child(0).time_visible(false)
 	get_parent().get_parent().connect("dialogue_finished", self, "next")
-	Hud.get_child(0).guide_text = "[right]Click on the timebar and release on the right response[/right]"
-	Hud.get_child(0).show_guide = true
+	Hud.get_child(0).guide_text("[right]Click on the timebar and release on the right response[/right]")
 	Stats.time -= 5
 	q1()
 
@@ -37,8 +36,8 @@ func q3():
 	self.hide()
 	$dad_dialogue.bbcode_text = "[center]Is [REDACTED] treating you right? Are you guys going to visit soon?[/center]"
 	$thoughts.bbcode_text = "[center](...)[/center]"
-	$honest.bbcode_text = "[center]Lie[/center]"
-	$lie.bbcode_text = "[center]Cry[/center]"
+	$honest.bbcode_text = "[center]Cry[/center]"
+	$lie.bbcode_text = "[center]Lie[/center]"
 	self.show()
 	$AnimationPlayer.play("intro")
 

@@ -28,11 +28,13 @@ var letter_lists = [letter0_list, letter1_list, letter2_list, letter3_list]
 var item
 var item_image
 var labels
+var timelost = 3
 
 
 func _ready():
 	randomize()
 	$face.hide()
+	Hud.get_child(0).guide_text("[right]Click on up and down buttons to change the active letter. \nPress PWR button to submit guess.[/right]")
 	labels = [$letter0, $letter1, $letter2, $letter3]
 	#Choosing item to guess
 	item = groceries[randi() % len(groceries)-1]
@@ -74,7 +76,7 @@ func _on_up_pressed():
 	indexes[index] += 1
 	labels[index].bbcode_text = letter_lists[index][indexes[index] % 5]
 
-
+#FIX LATER TO USE ARROW KEYS
 func _on_submit_pressed():
 	if index < 4:
 		if letter_lists[index][indexes[index] % 5] == item[index]:
@@ -82,15 +84,16 @@ func _on_submit_pressed():
 			if index < 4:
 				labels[index].bbcode_text = letter_lists[index][indexes[index] % 5]
 			else:
-				print("You got it!")
 				$StaticPlayer.play("staticoff")
 				yield($StaticPlayer, "animation_finished")
-				#$face.show()
 				$thoughts.bbcode_text = "Oh yeah... I'll add it to the list"
 				$thoughts/AnimationPlayer.play("bounce")
 				yield($thoughts/AnimationPlayer, "animation_finished")
+				Stats.time -= timelost
 				get_tree().change_scene(world)
-			$StaticPlayer.play(animations[index])
+			$StaticPlayer.play("static2layers")
 		else:
-			print("Not quite...")
+			timelost += 1
+			$thoughts.bbcode_text = "I don't think so..."
+			$thoughts/AnimationPlayer.play("bounce")
 		guessnum +=1

@@ -83,6 +83,7 @@ func _process(delta):
 			yield($Timer, "timeout")
 			$fade/AnimationPlayer.play("fade")
 			yield($fade/AnimationPlayer, "animation_finished")
+			timelost += 1
 			level = 1
 			forest3()
 			$knocking.bbcode_text = ""

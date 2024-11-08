@@ -196,7 +196,7 @@
     "ghost_303" : {
         "type": "dialogue", 
         "speaker_id": "ghost", 
-        "text": ["I wrote down the symbols in the order you should knock, but I couldn't remember which trees were where, so make sure you look at the symbols on the trees!", "Make sure you do the knocking, he can get a little mean when he’s nervous. Thank you again!!! <3"],
+        "text": ["I wrote down the symbols in the order you should knock, but I couldn't remember which trees were where,", "so make sure you look carefully at the symbols on the trees!", "Make sure you do the knocking, he can get a little mean when he’s nervous. Thank you again!!! <3"],
         "choices": {},
         "commands": {"type": "game", "specific" : "ghostgame"}
     },
@@ -408,16 +408,18 @@
     "circus_000" : {
         "type": "dialogue", 
         "speaker_id": "circus", 
-        "text": ["Hi"],
-        "choices": {},
-        "commands": {"type": "game", "specific" : "circusgame"}
+        "text": ["Come test your strength!"],
+        "choices": { 
+            "choice1" : {"text": "Sorry, I'm in a hurry...", "next" : "circus_100"},
+            "choice2" : {"text" : "No, thank you. I'm not in the mood for games...", "next": "circus_100"}},
+        "commands": {}
     },
     "circus_100" : {
         "type": "dialogue", 
         "speaker_id": "circus", 
-        "text": [""],
+        "text": ["Well, that's too bad!"],
         "choices": {},
-        "commands": {}
+        "commands": {"type": "game", "specific" : "circusgame"}
     },
     "circus_101" : {
         "type": "dialogue", 
@@ -434,6 +436,52 @@
         "commands": {}
     },
 
+    "end_000" : {
+        "type": "dialogue", 
+        "speaker_id": "X", 
+        "text": ["[rainbow freq=1.0 sat=0.8 val=0.8]FINALLY![/rainbow]"],
+        "choices": {},
+        "commands": {}
+    },
+
+    "end_001" : {
+        "type": "dialogue", 
+        "speaker_id": "teeth", 
+        "text": ["Hey X! You need some help carrying that?"],
+        "choices": {},
+        "commands": {"type": "next", "specific":"end_003"}
+    },
+
+    "end_002" : {
+        "type": "dialogue", 
+        "speaker_id": "ghost", 
+        "text": ["Can I help? I can't carry anything, but we can keep you company on the way back!"],
+        "choices": {},
+        "commands": {"type": "next", "specific":"end_004"}
+    },
+
+    "end_003" : {
+        "type": "dialogue", 
+        "speaker_id": "X", 
+        "text": ["That would actually be so dope... I'm exhausted... You were great tonight by the way!"],
+        "choices": {},
+        "commands": {"type": "next", "specific":"end_002"}
+    },
+    "end_004" : {
+        "type": "dialogue", 
+        "speaker_id": "X", 
+        "text": ["Sure. Thanks, Ghoulia & Laszlo!"],
+        "choices": {},
+        "commands": {}
+    },
+    
+    "end_005" : {
+        "type": "dialogue", 
+        "speaker_id": "X", 
+        "text": ["Time to head home..."],
+        "choices": {},
+        "commands": {}
+    },
 
 
 

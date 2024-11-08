@@ -1,10 +1,8 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/ProtagSpriteSheet1-0.png" type="Texture" id=2]
 [ext_resource path="res://playercam.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/BG_NightSky_3-3.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 28.0
@@ -66,6 +64,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 16 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -214,66 +224,6 @@ tracks/0/keys = {
 "values": [ 10, 9, 8 ]
 }
 
-[sub_resource type="DynamicFont" id=15]
-font_data = ExtResource( 5 )
-
-[sub_resource type="Theme" id=16]
-default_font = SubResource( 15 )
-
-[sub_resource type="Animation" id=17]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=14]
-resource_name = "gameover"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -302,30 +252,3 @@ anims/fall = SubResource( 6 )
 anims/grabbed = SubResource( 8 )
 anims/jl_start = SubResource( 18 )
 anims/land = SubResource( 7 )
-
-[node name="Game_Over" type="Sprite" parent="."]
-visible = false
-position = Vector2( 0, 2 )
-texture = ExtResource( 4 )
-
-[node name="try_again" type="RichTextLabel" parent="Game_Over"]
-margin_left = -225.0
-margin_top = -77.0
-margin_right = 223.0
-margin_bottom = -37.0
-theme = SubResource( 16 )
-text = "Press Enter to try again..."
-
-[node name="gameover" type="RichTextLabel" parent="Game_Over"]
-margin_left = -416.0
-margin_top = -205.0
-margin_right = 424.0
-margin_bottom = -165.0
-theme = SubResource( 16 )
-bbcode_enabled = true
-bbcode_text = "[b]OUT OF TIME[/b]"
-text = "OUT OF TIME"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Game_Over"]
-anims/RESET = SubResource( 17 )
-anims/gameover = SubResource( 14 )

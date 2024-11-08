@@ -19,17 +19,13 @@ var dadcall_entered = false
 var teeth_entered = false
 var circus_entered = false
 
-var ghost_active = true
-var dadcall_active = true
-var teeth_active = true
-var circus_active = true
-
 var current_time = 90
 var gameover = false
 
 func _ready():
 	Hud.get_child(0).time_visible(true)
 	var spawnposition
+	print(Stats.current_location)
 	if Stats.current_location == "firstspawn":
 		var i = introScene.instance()
 		self.add_child(i)
@@ -48,7 +44,6 @@ func _ready():
 	
 	Hud.get_child(0).hide_guide()
 	$Laszlo.hide()
-	$Ghost.hide()
 
 
 func dialogue(dIndex):
@@ -116,8 +111,9 @@ func _on_Ghost_Area2D_body_entered(body):
 		yield($Ghost/AnimationPlayer, "animation_finished")
 		$Ghost/AnimationPlayer.play("float")
 		dialogue("ghost_100")
-	if Stats.ghost_success and ghost_active:
-		ghost_active = false
+	if Stats.ghost_success and Stats.ghost_active:
+		$Ghost.visible = true
+		Stats.ghost_active = false
 		dialogue("ghost_400")
 		$Laszlo.show()
 
@@ -125,7 +121,6 @@ func _on_Ghost_Area2D_body_entered(body):
 func _on_Ghost_Area2D_body_exited(body):
 	ghost_entered = false
 	if not Stats.ghost_success and $Ghost.visible:
-		ghost_active = false
 		$Ghost/AnimationPlayer.play_backwards("fade")
 		yield($Ghost/AnimationPlayer, "animation_finished")
 		$Ghost.visible = false
@@ -134,6 +129,7 @@ func _on_Ghost_Area2D_body_exited(body):
 
 func _on_Dad_Area_body_entered(body):
 	dadcall_entered = true
+	Stats.current_location = "dadspawn"
 	if not Stats.dad_encountered:
 		Stats.dad_encountered = true
 		dialogue("dad_000")
@@ -157,10 +153,11 @@ func _on_Dad_Area_body_exited(body):
 
 func _on_Teeth_Area_body_entered(body):
 	teeth_entered = true
+	Stats.current_location = "teethspawn"
 	if not Stats.teeth_encountered:
 		Stats.teeth_encountered = true
 		dialogue("teeth_100")
-	if Stats.teeth_encountered and not Stats.teeth_success:
+	else:
 		$Teeth.hide()
 
 func _on_Teeth_Area_body_exited(body):
@@ -171,6 +168,7 @@ func _on_Teeth_Area_body_exited(body):
 
 
 func _on_Circus_Area_body_entered(body):
+	Stats.current_location = "circusspawn"
 	circus_entered = true
 	if not Stats.circus_encountered:
 		Stats.circus_encountered = true
@@ -181,17 +179,18 @@ func _on_Circus_Area_body_exited(body):
 	circus_entered = false
 
 
-
-
-
-
-func _on_demo_end_body_entered(body):
-	$Player.can_move = false
-	$Player/Game_Over/gameover.bbcode_text = "[center]TO BE CONTINUED (very soon...)[/center]"
-	$Player/Game_Over/AnimationPlayer.play("gameover")
-	gameover = true
-
-
+func _on_grocery_body_entered(body):
+	Hud.get_child(0).gameover_screen()
+	dialogue("end_000")
+	if d.get_child(0):
+		yield(d.get_child(0), "finished")
+	Hud.get_child(0).gameover_text("[center]GROCERY RUN[/center]", "[center][rainbow freq=1.0 sat=0.8 val=0.8]Have a nice night![/rainbow][/center]")
+	dialogue("end_005")
+	if d.get_child(0):
+		yield(d.get_child(0), "finished")
+	if Stats.teeth_success and Stats.ghost_success:
+		dialogue("end_001")
+	
 
 
 func reset():
@@ -209,16 +208,18 @@ func _process(delta):
 		if ghost_entered and Stats.ghost_encountered and Stats.ghost_success:
 			Stats.current_location = "ghostspawn"
 		elif dadcall_entered:
-			Stats.current_location = "dadcallspawn"
+			Stats.current_location = "dadspawn"
 		elif teeth_entered:
 			Stats.current_location = "teethspawn"
 		elif circus_entered:
 			Stats.current_location = "circusspawn"
 		elif gameover:
 			reset()
-	if current_time < 0:
+	if Stats.time <= 0 and not gameover:
 		$Player.can_move = false
-		$Player/Game_Over/AnimationPlayer.play("gameover")
+		Hud.get_child(0).gameover_screen()
+		Hud.get_child(0).gameover_text("[center]Out of Time...[/center]", "")
+		Stats.time = 1
 		gameover = true
 	
 

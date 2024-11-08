@@ -19,6 +19,15 @@ func hide_guide():
 func guide_text(t):
 	$guide.bbcode_text = t
 	$guide.show()
+	
+func gameover_screen():
+	$Game_Over/AnimationPlayer.play("gameover")
+
+func gameover_text(t1,t2):
+	$Game_Over/try_again.bbcode_text = t1
+	$Game_Over/gameover.bbcode_text = t2
+	$Game_Over/try_again.show()
+	$Game_Over/gameover.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

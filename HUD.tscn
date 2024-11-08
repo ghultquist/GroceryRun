@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui.gd" type="Script" id=2]
+[ext_resource path="res://Assets/BG_NightSky_3-3.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -46,6 +47,66 @@ font_data = ExtResource( 1 )
 [sub_resource type="Theme" id=6]
 default_font = SubResource( 5 )
 
+[sub_resource type="DynamicFont" id=15]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=16]
+default_font = SubResource( 15 )
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "gameover"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
@@ -76,12 +137,41 @@ anims/RESET = SubResource( 4 )
 anims/warn = SubResource( 3 )
 
 [node name="guide" type="RichTextLabel" parent="Control"]
-margin_left = 333.0
-margin_top = 315.0
+margin_left = 28.0
+margin_top = 329.0
 margin_right = 637.0
-margin_bottom = 355.0
+margin_bottom = 359.0
 theme = SubResource( 6 )
 custom_colors/default_color = Color( 1, 1, 1, 0.486275 )
 bbcode_enabled = true
 bbcode_text = "[right]Press enter to...[/right]"
 text = "Press enter to..."
+
+[node name="Game_Over" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 633, 354 )
+texture = ExtResource( 3 )
+
+[node name="try_again" type="RichTextLabel" parent="Control/Game_Over"]
+visible = false
+margin_left = -540.0
+margin_top = -156.0
+margin_right = -92.0
+margin_bottom = -116.0
+theme = SubResource( 16 )
+bbcode_enabled = true
+
+[node name="gameover" type="RichTextLabel" parent="Control/Game_Over"]
+visible = false
+margin_left = -611.0
+margin_top = -263.0
+margin_right = -33.0
+margin_bottom = -223.0
+theme = SubResource( 16 )
+bbcode_enabled = true
+bbcode_text = "[b]OUT OF TIME[/b]"
+text = "OUT OF TIME"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Game_Over"]
+anims/RESET = SubResource( 17 )
+anims/gameover = SubResource( 18 )

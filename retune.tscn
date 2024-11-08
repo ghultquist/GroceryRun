@@ -622,7 +622,7 @@ position = Vector2( 320, 180 )
 texture = ExtResource( 5 )
 
 [node name="StaticPlayer" type="AnimationPlayer" parent="."]
-autoplay = "static4layers"
+autoplay = "static2layers"
 anims/RESET = SubResource( 1 )
 anims/static1layer = SubResource( 3 )
 anims/static2layers = SubResource( 4 )
